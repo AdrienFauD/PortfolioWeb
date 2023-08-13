@@ -130,7 +130,7 @@ export default function MoneyBoard(props) {
 
         </div>
             <div className="coin-inserter" >
-                Type the amount you want to spend (max 5€): {amountGiven}
+                Type the amount you want to spend (max 2€): {amountGiven}
                 <input
                     value={amountGiven}
                     onChange={e => setAmountGiven(e.target.value)}

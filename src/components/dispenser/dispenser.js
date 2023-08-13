@@ -94,14 +94,15 @@ class Dispenser extends React.Component {
                 />
                 <div class="drink-box">
                     <table>
-                        {this.state.moneyInDispenser.map(element => {
+                        nothing
+                        {/* {this.state.moneyInDispenser.map(element => {
                             return (
                                 <tr >
                                     <td>{element[0]}</td>
                                     <td>{element[1]}</td>
                                     <td>{element[2]}</td>
                                 </tr>)
-                        })}
+                        })} */}
                     </table>
                 </div>
             </div>

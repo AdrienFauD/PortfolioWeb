@@ -1,18 +1,21 @@
-.chips, .soda, .coffee, .sandwich, .ferrari, .juice, .helicopter, .water, .dispenser, .choice-pad, .drink-box {
+.chips, .soda, .coffee, .sandwich, .ferrari, .juice, .helicopter, .water, .dispenser, .choice-pad, .drink-box, .coin-inserter {
     border: 1mm solid black;
+    margin: auto;
+    padding: auto;
+    width: 100%;
+    height: 100%;
 }
 
 .dispenser {
-    font-size: 50px;
-    margin: 5px;
-    padding: 5px;
-    color: pink;
+    background-color:  rgba(215, 187, 187, 0.887);
+    width: 50%;
+    height: 80vh;
+    font-size: 16px;
+    margin: auto;
+    color: rgb(0, 0, 0);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    column-gap: 20px;
-    row-gap: 20px;
-    align-items: stretch;
 }
 
 .chips {
@@ -48,10 +51,12 @@
 }
 
 .choice-pad {
-    grid-area: 1/5/ span 2/span 1;
+    grid-area: 2/5;
     display: grid;
     grid-template-columns: repeat(3, 5fr);
     grid-template-rows: repeat(4, 1fr);
+    height: auto;
+    width: 50%;
 }
 
 .drink-box {
@@ -63,12 +68,10 @@
     border: ridge grey;
     border-radius: 50% 50% 50% 50% ;
     text-align: center;
-    width: 100%;
     background-color: slategray;
 }
+
 .coin-inserter{
-    margin: auto;
     text-align: center;
     grid-area: 3/5/ span 1/span 1;
-
 }
