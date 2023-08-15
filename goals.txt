@@ -3,6 +3,7 @@ A réaliser :
 - Mini jeu
 - Travailler sur l'ux
 - Utiliser emailjs pour le contact
+- Générer animation avec timeout pour faire un effet stylax
 
 LINKS PIECES
 
