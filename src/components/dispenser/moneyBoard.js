@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import ReturnedCoins from "./returnedCoins"
 
 export default function MoneyBoard(props) {
     const keyboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '*'];
-    const { moneyLeft, productsLeft, sumInDispenser, changeMoneyDispenser, addCoinsToMachine, giveProduct, error } = props
+    const { coins, moneyLeft, productsLeft, sumInDispenser, changeMoneyDispenser, addCoinsToMachine, giveProduct, error, userTakesMoney } = props
     const [moneyInserted, setMoneyInserted] = useState(0)
     const [amountGiven, setAmountGiven] = useState(0)
 
@@ -10,7 +11,7 @@ export default function MoneyBoard(props) {
 
     // when the change has been inserted, the user choose what product he wants
     const handleInsertMoney = (userChoice) => {
-        if(userChoice >= 8 ){ return }
+        if (userChoice >= 8) { return }
         const amount = parseFloat(amountGiven).toFixed(2)
         const productValue = productsLeft[userChoice][2]
         // no product left
@@ -42,7 +43,7 @@ export default function MoneyBoard(props) {
         else if (amount >= productValue) {
             addCoinsToMachine(amountGiven)
             giveProduct(userChoice)
-            if (amount === productValue) alert("take your thing")
+            if (amount === productValue) error("")
             else {
                 let changeToGiveBack = amount - productValue
                 giveMoney(changeToGiveBack.toFixed(2))
@@ -56,23 +57,25 @@ export default function MoneyBoard(props) {
 
 
     // handles what happens with the money when it is in the machine
-    const giveMoney = ( moneyInsertedNum ) => {
-        let num =  moneyInsertedNum 
+    const giveMoney = (moneyInsertedNum) => {
+        
+        let num = moneyInsertedNum
         let money = [...moneyLeft]
         let arr = []
         let i = 0
         while (num > 0) {
 
-            // force loop to stop when we checked every coins pile 
+            // force loop to stop when we checked every coin stacks 
             if (i > 5) {
                 if (num !== 0) {
-                    alert("not enough change in the machine")
+                    error(5)
                     arr.length = 0
                 }
                 break
             } else {
                 // si l'indice i a de l'argent et que cette valeur est infèrieure à num : 
                 if ((num - money[i][1]).toFixed(2) >= 0) {
+
                     if (money[i][2] > 0) {
                         arr.push([money[i][0], money[i][1]])
                         num = (num - money[i][1]).toFixed(2)
@@ -88,7 +91,6 @@ export default function MoneyBoard(props) {
             }
 
         }
-
         const arrNoDupes = countDuplicates(arr)
         changeMoneyDispenser(arrNoDupes)
     }
@@ -134,9 +136,12 @@ export default function MoneyBoard(props) {
                     value={amountGiven}
                     onChange={e => setAmountGiven(e.target.value)}
                 />
-                <div className="coin-box">
-                    
-                </div>
+
+                <ReturnedCoins
+                    coins={coins}
+                    userTakesMoney={userTakesMoney}
+                />
+
             </div>
         </>
     )

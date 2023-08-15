@@ -1,4 +1,4 @@
-.chips, .soda, .coffee, .sandwich, .ferrari, .juice, .helicopter, .water, .dispenser, .choice-pad, .drink-box, .coin-inserter {
+.champagne, .soda, .coffee, .sandwich, .ferrari, .juice, .helicopter, .water, .dispenser, .choice-pad, .drink-box, .coin-inserter {
     border: 1mm solid black;
     margin: auto;
     padding: auto;
@@ -10,6 +10,8 @@
 .dispenser {
     background-color:  rgba(215, 187, 187, 0.887);
     width: 50%;
+    min-width: 350px;
+    max-width: 700px;
     height: 80vh;
     font-size: 16px;
     margin: auto;
@@ -20,7 +22,7 @@
     grid-template-rows: repeat(4, 1fr);
 }
 
-.chips {
+.champagne {
     grid-area: 1/1;
 }
 

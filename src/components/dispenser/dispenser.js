@@ -16,24 +16,25 @@ class Dispenser extends React.Component {
                 // name, value, total
                 ['twos', 2, 0.00],
                 ['ones', 1, 0.00],
-                ['fiftys', 0.5, 2.50],
-                ['twentys', 0.2, 2.40],
-                ['tens', 0.1, 3.70],
-                ['fives', 0.05, 0.05]
+                ['fiftys', 0.5, 52.50],
+                ['twentys', 0.2, 52.40],
+                ['tens', 0.1, 53.70],
+                ['fives', 0.05, 50.05]
             ],
             productsInDispenser: [
                 // name, total, price
                 ['champagne', 3, 2, '🍾'],
                 ['soda', 1, 1.5, '🥤'],
-                ['coffee', 2, 0.5, '☕'],
-                ['sandwich', 3, 2, '🥪'], 
+                ['coffee', 10, 0.5, '☕'],
+                ['sandwich', 3, 2, '🥪'],
                 ['ferrari', 0, 1.8, '🏎'],
                 ['juice', 3, 1, '🧃'],
                 ['helicopter', 0, 2, '🚁'],
                 ['water', 3, 0.80, '🚰'],
             ],
             itemInBox: "",
-            errorMessage: ''
+            errorMessage: '',
+            change: ''
         }
     }
 
@@ -59,10 +60,10 @@ class Dispenser extends React.Component {
         }, [])
 
         newStateMoney.forEach((element, index) => {
-            element[2] += arr[index] * element[1]
+            element[2] = parseFloat(element[2]) + parseFloat(arr[index] * element[1])
 
         })
-
+        
         this.setState({
             moneyInDispenser: arr
         })
@@ -70,12 +71,15 @@ class Dispenser extends React.Component {
 
     // modify the amount of money there is in the distributor
     handleMoneyChange = (param, num) => {
+        this.setState({
+            change : param
+        })
         const tempMoneyState = [...this.state.moneyInDispenser]
-
         this.setState({
             moneyInDispenser: tempMoneyState
         })
     }
+
 
     // empty drink box
     takeItem = () => {
@@ -102,8 +106,13 @@ class Dispenser extends React.Component {
             case 4:
                 errorMessage = "you need to insert " + value
                 break
+            case 5:
+                errorMessage = 'not enough change in the machine'
+                break
             case '':
                 errorMessage = "take your item"
+                break
+            default:
                 break
         }
         this.setState({
@@ -115,7 +124,11 @@ class Dispenser extends React.Component {
             })
         }, 5000);
     }
-
+    userTakesMoney = () => {
+        this.setState({
+            change : ''
+        })
+    }
     render() {
         return (
             <div className="dispenser">
@@ -134,6 +147,8 @@ class Dispenser extends React.Component {
                     sumInDispenser={this.state.sumInDispenser}
                     changeMoneyDispenser={this.handleMoneyChange}
                     giveProduct={this.handleProductsChange}
+                    coins = {this.state.change}
+                    userTakesMoney = {this.userTakesMoney}
                 />
                 <DrinkBox
                     product={this.state.itemInBox}
