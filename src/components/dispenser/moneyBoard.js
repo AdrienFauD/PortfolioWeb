@@ -11,7 +11,7 @@ export default function MoneyBoard(props) {
 
     // when the change has been inserted, the user choose what product he wants
     const handleInsertMoney = (userChoice) => {
-        if (userChoice >= 8) { return }
+        if (userChoice >= 8 || typeof userChoice !== 'number') { return }
         const amount = parseFloat(amountGiven).toFixed(2)
         const productValue = productsLeft[userChoice][2]
         // no product left
