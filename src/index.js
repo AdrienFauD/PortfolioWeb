@@ -15,6 +15,7 @@ import Navbar from './components/Navbar';
 import Project from './routes/projects';
 import Home from './routes/home';
 import Shop from './components/shop/shop';
+import Product from './components/shop/product';
 
 const router = createBrowserRouter([
   {
@@ -27,14 +28,12 @@ const router = createBrowserRouter([
         element: <Navbar />
       },
       {
+        path : "shop",
+        element : <Shop />,
+      },
+      {
         path : 'projects',
         element : <Project/>,
-        children : [
-          {
-            path : "projects/shop",
-            element : <Shop />
-          }
-        ]
       },
       {
         path : '/home',

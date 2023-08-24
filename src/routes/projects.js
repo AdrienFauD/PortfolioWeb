@@ -1,5 +1,6 @@
 import React from "react"
-
+import { Outlet, Link} from "react-router-dom"
+ 
 export default function Project() {
     return (
         <>
@@ -20,7 +21,9 @@ export default function Project() {
                         Cool todolist used to add task, read, update and remove them when completed (or if lazyness won) 
                     </p>
                 </div>
+                <Link to={'/shop'}>YOOOOOOOOOOOOOOOlo </Link>
             </div>
+            <Outlet />
         </>
     )
 }

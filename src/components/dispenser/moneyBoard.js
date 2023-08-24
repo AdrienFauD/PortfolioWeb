@@ -118,8 +118,6 @@ export default function MoneyBoard(props) {
 
 
 
-
-
     return (
         // creating the keyboard dynamically 
         <><div className="choice-pad">
