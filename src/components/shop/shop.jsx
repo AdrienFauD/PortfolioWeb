@@ -3,7 +3,9 @@ import './shop.css'
 import Cart from "./cart"
 import Store from "./store"
 import Order from "./order"
+import Product from "./product"
 import { useState } from "react"
+import {Routes, Route } from "react-router-dom"
 
 export default function Shop() {
 
@@ -41,9 +43,6 @@ export default function Shop() {
                 Toggle
             </button>
             <Order />
-
-
-
         </div>
     </>
 }
