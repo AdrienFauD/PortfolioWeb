@@ -1,20 +1,32 @@
 import React from 'react'
-import { useParams, useSearchParams } from 'react-router-dom'
+import { useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 
-export default function Search() {
+export default function Search(props) {
 
-    const [searchParams, setSearchParams] = useSearchParams({ q: "a", i: 0 })
+    const { handleSearch } = props
+    const URL_SEARCH = 'https://dummyjson.com/products/search?q='
+    const navigate = useNavigate()
+    const [searchParams, setSearchParams] = useSearchParams({ q: "" })  
     const question = searchParams.get("q")
-    const ind = searchParams.get("i")
-    console.log(searchParams)
+
+    const handleSubmitSearch = (e) => {
+        e.preventDefault()
+        handleSearch()
+        navigate('/shop?q='+question)
+    }
 
     return (
-        <input
-            placeholder='Your research'
-            value={question}
-            onChange={e => setSearchParams({ q : e.target.value})}
-            type="number,text"
-        />
+        <form onSubmit={handleSubmitSearch}>
+            <input
+                placeholder='Your research'
+                value={question}
+                onChange={e => setSearchParams({ q: e.target.value })}
+                type="number,text"
+                style={{ width: '100px', height: '100px' }}
+            />
+        </form>
+
     )
 
 }

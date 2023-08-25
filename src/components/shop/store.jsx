@@ -1,21 +1,34 @@
 import useFetch from "./useFetch"
-import { Link, Outlet, Routes, useParams } from "react-router-dom"
+import { Link, Outlet, Routes, useParams, useSearchParams } from "react-router-dom"
 import './css/store.css'
 
-export default function Store({ handleAuth, handleAddCart }) {
+export default function Store({ searchToggle, handleAddCart }) {
 
 
-    const DATA_URL = 'https://dummyjson.com/products?limit=10'
-    const param = useParams()
-    const data = useFetch(DATA_URL)
-    console.log(useParams)
+    const URL_BASIC = 'https://dummyjson.com/products?limit=20'
+    const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
+    const [searchParams, setSearchParams] = useSearchParams({ q: '' })
+    const user_search = searchParams.get('q')
+    let request;
+
+    if (user_search !== '') {
+        request = URL_WITH_SEARCH + user_search
+    } else {
+        request = URL_BASIC
+    }
+
+    const data = useFetch(request)
+
 
     return <>
-        <div className="store" onClick={e => handleAuth(e)}>
+        <div
+            className="store"
+            toggleHandler = {searchToggle}
+        >
             {data ?
                 Object.keys(data.products).map((product, i) => (
                     <div key={product} className="product-quickview" >
-                        <Link to={'./product?q=' + data["products"][i].title+'&i='+data["products"][i].id} state={data["products"][i]}>
+                        <Link to={'./product?q=' + data["products"][i].title + '&i=' + data["products"][i].id} state={data["products"][i]}>
                             <img className="img-qv" src={`${data['products'][i].thumbnail}`} />
                         </Link>
                         <Outlet context={{ item: data["products"][i].id }} />

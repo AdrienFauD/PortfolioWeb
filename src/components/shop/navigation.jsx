@@ -11,7 +11,7 @@ export default function Navigation() {
             <ul>
                 {data?.map(el =>
                     <li>
-                        <Link to='' style={{textDecoration: "none", color : 'black'}}>
+                        <Link to={`/shop?q=${el}`} style={{textDecoration: "none", color : 'black'}}>
                             {el.charAt(0).toUpperCase() + el.slice(1)}
                         </Link>
                     </li>
