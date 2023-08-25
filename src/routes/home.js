@@ -45,18 +45,6 @@ export default function Home() {
     return (
         <>
 
-            {/* <div className='svg-container'>
-                <svg viewBox="0 0 1 1" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="1" height="1">
-                        <animate
-                            attributeName="rx"
-                            values="0;1;0"
-                            dur="1s"
-                            repeatCount="indefinite" />
-                    </rect>
-                </svg>
-            </div> */}
-
             <div className="container bg-ternary">
                 <div className='row'>
                     <div className="card m-auto" style={{ width: "18rem" }}>
@@ -97,18 +85,18 @@ export default function Home() {
                     </div>
                 </div>
                 <div className=" row">
-                        {Object.keys(cards).map((keyName, i) => (
-                            Object.keys(cards[i] || {}).length > 0 ?
-                                <div key={keyName} className='col card' style={{ maxWidth: '18rem', minWidth : '16rem', height: '100%', maxHeight : "300px"}}>
-                                    <div className='card-body '>
-                                        <div className='fs-2' style={{ float: 'right', border : "solid red 1px", borderRadius : '5px', color : "red" }} onClick={() => handleDelete(i)}>X</div>
-                                        <h5 className='card-title' style={{maxHeight : "4em",overflow : "hidden"}}>{cards[keyName].title}</h5>
-                                        <div className='card-text' style={{maxHeight : "10em",overflow : "auto"}}>{cards[keyName].text}</div>
-                                        <a href={`${cards[keyName].link}`} className='btn btn-primary' style={{maxHeight : "25%", minHeight : "3em",overflow : "auto"}}>go</a>
-                                    </div>
+                    {Object.keys(cards).map((keyName, i) => (
+                        Object.keys(cards[i] || {}).length > 0 ?
+                            <div key={keyName} className='col card' style={{ maxWidth: '18rem', minWidth: '16rem', height: '100%', maxHeight: "300px" }}>
+                                <div className='card-body '>
+                                    <div className='fs-2' style={{ float: 'right', border: "solid red 1px", borderRadius: '5px', color: "red" }} onClick={() => handleDelete(i)}>X</div>
+                                    <h5 className='card-title' style={{ maxHeight: "4em", overflow: "hidden" }}>{cards[keyName].title}</h5>
+                                    <div className='card-text' style={{ maxHeight: "10em", overflow: "auto" }}>{cards[keyName].text}</div>
+                                    <a href={`${cards[keyName].link}`} className='btn btn-primary' style={{ maxHeight: "25%", minHeight: "3em", overflow: "auto" }}>go</a>
                                 </div>
-                                : <div></div>
-                        ))}
+                            </div>
+                            : <div></div>
+                    ))}
                 </div>
 
             </div>

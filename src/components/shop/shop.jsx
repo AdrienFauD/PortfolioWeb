@@ -1,8 +1,9 @@
 import React from "react"
-import './shop.css'
+import './css/shop.css'
 import Cart from "./cart"
 import Store from "./store"
 import Order from "./order"
+import Navigation from './navigation'
 import Product from "./product"
 import { useState } from "react"
 import {Routes, Route } from "react-router-dom"
@@ -32,6 +33,9 @@ export default function Shop() {
                 isToggled={isToggled}
                 handleCloseCart={handleCloseCart}
                 cartQuantity = {cartQuantity}
+            />
+            <Navigation 
+                
             />
             <Store
                 isAuth={isAuth}

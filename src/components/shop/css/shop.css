@@ -1,0 +1,10 @@
+.shop{
+    display: flex;
+}
+ul{
+    list-style-type: none;
+    text-align: left;
+}
+ul>li{
+    padding : .1em
+}
