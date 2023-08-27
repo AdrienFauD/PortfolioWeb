@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 export default function Search(props) {
@@ -12,7 +11,7 @@ export default function Search(props) {
 
     const handleSubmitSearch = (e) => {
         e.preventDefault()
-        handleSearch()
+        handleSearch(question)
         navigate('/shop?q='+question)
     }
 

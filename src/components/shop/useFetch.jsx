@@ -11,7 +11,7 @@ export default function useFetch(url) {
                 .then(response => {return response.json()})
                 .then(data => setData(data))
         })()
-    }, [])
+    }, [url])
 
     return data 
 }

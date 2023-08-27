@@ -13,7 +13,7 @@ export default function Shop() {
 
     const [isToggled, setIsToggled] = useState(false)
     const [isAuth, setIsAuth] = useState(true)
-    const [searchToggle, setSearchToggle] = useState(true)
+    const [searchValue, setSearchValue] = useState('')
     const [cartQuantity, setCartQuantity] = useState(0)
 
     async function handleCloseCart() {
@@ -24,13 +24,11 @@ export default function Shop() {
         setIsAuth(prev => !prev)
     }
 
-    const handleAddCart = (index) => {
-        console.log(index)
+    const handleAddCart = (item) => {
     }
 
-    const handleSearch = () => {
-        setSearchToggle(prev => !prev)
-        console.log(searchToggle)
+    const handleSearch = (param) => {
+        setSearchValue(param)
     }
 
     return <>
@@ -46,9 +44,9 @@ export default function Shop() {
             <Navigation
             />
             <Store
+                searchValue={searchValue}
                 isAuth={isAuth}
                 handleAuth={handleAuth}
-                searchToggle={searchToggle}
                 handleAddCart={handleAddCart}
             />
             <button

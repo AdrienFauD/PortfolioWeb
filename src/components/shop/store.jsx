@@ -1,18 +1,19 @@
 import useFetch from "./useFetch"
+
 import { Link, Outlet, Routes, useParams, useSearchParams } from "react-router-dom"
 import './css/store.css'
+import { useState, } from "react"
 
-export default function Store({ searchToggle, handleAddCart }) {
+export default function Store(props) {
 
-
+    const { searchValue, handleAddCart } = props
+    const [pseudoState, setPseudoState] = useState(true)
     const URL_BASIC = 'https://dummyjson.com/products?limit=20'
-    const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
-    const [searchParams, setSearchParams] = useSearchParams({ q: '' })
-    const user_search = searchParams.get('q')
-    let request;
+    const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q=' + searchValue
+    let request = '';
 
-    if (user_search !== '') {
-        request = URL_WITH_SEARCH + user_search
+    if (searchValue !== '') {
+        request = URL_WITH_SEARCH
     } else {
         request = URL_BASIC
     }
@@ -23,7 +24,6 @@ export default function Store({ searchToggle, handleAddCart }) {
     return <>
         <div
             className="store"
-            toggleHandler = {searchToggle}
         >
             {data ?
                 Object.keys(data.products).map((product, i) => (

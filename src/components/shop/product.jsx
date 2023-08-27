@@ -68,7 +68,7 @@ export default function Product() {
                         <div className='item-description'>
                             {data.products[0].description}
                         </div>
-                        <button className="add-cart-button">Add to cart</button>
+                        <button className="add-cart-button" >Add to cart</button>
                     </div>
 
                 </div>
