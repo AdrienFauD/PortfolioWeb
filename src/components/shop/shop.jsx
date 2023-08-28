@@ -2,18 +2,21 @@ import './css/shop.css'
 import Cart from "./cart"
 import Store from "./store"
 import Order from "./order"
+import Login from './login'
 import Navigation from './navigation'
 import { useState } from "react"
 import Search from "./search"
+import Product from './product'
 
 export default function Shop() {
 
     const [isToggled, setIsToggled] = useState(false)
     const [isAuth, setIsAuth] = useState(true)
+    const [isProduct, setIsProduct] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [cart, setCart] = useState([])
 
-    async function handleCloseCart() {
+    async function handleIsLoged() {
         setIsToggled(prev => !prev)
     }
     async function handleAuth(e) {
@@ -35,14 +38,17 @@ export default function Shop() {
                 <Search
                     handleSearch={handleSearch}
                 />
+                <Login 
+                    handleIsLoged={handleIsLoged}
+                />
                 <Cart
                     isToggled={isToggled}
-                    handleCloseCart={handleCloseCart}
+                    handleIsLoged={handleIsLoged}
                     cart={cart}
                 />
             </div>
 
-
+            
             <div className="shop-window">
                 <Navigation
                 />
@@ -52,10 +58,6 @@ export default function Shop() {
                     handleAuth={handleAuth}
                     handleAddCart={handleAddCart}
                 />
-                <button
-                    onClick={handleCloseCart}>
-                    Toggle
-                </button>
                 <Order />
             </div>
         </div>

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 
 export default function Cart(props) {
-    const { isToggled, handleCloseCart, cart } = props
+    const { isToggled, handleIsLoged, cart } = props
     const [cartItems, setCartItems] = useState([{},{}])
 
     const handlesort = () => {
@@ -20,10 +20,9 @@ export default function Cart(props) {
     return <>
         {
             isToggled ?
-                <div className="cart">
-                    {/* {cartItems[1].values} */}
+                <div className="cart-shop">
                     <button onClick={handlesort} >AAAAAA</button>
-                    <div className="delete-cart" onClick={e => handleCloseCart()}>X</div>
+                    <div className="delete-cart" onClick={e => handleIsLoged()}>X</div>
                 </div>
                 : null 
         }

@@ -4,7 +4,6 @@ import useHandleCartContext from './shop'
 export default function AddCartButton(props) {
     const { handleAddCart } = useHandleCartContext()
 
-    console.log(handleAddCart)
     return (
 
         <button

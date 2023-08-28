@@ -91,6 +91,9 @@ class Dispenser extends React.Component {
     handleError = (param, value) => {
         let errorMessage = ''
         switch (param) {
+            case "NaN" : 
+                errorMessage = "this machine only accept numbers"
+                break
             case 0:
                 errorMessage = "out of product"
                 break

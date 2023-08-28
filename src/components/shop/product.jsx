@@ -19,7 +19,7 @@ export default function Product() {
     return (
         <>
             {data?.products[0] ?
-                <div className="item">
+                <div className="product-item">
                     <div className='img-item'>
                         <div className='list-item'>
                             {data.products[0].images.map((el, index) =>

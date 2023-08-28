@@ -3,8 +3,7 @@ import ReturnedCoins from "./returnedCoins"
 
 export default function MoneyBoard(props) {
     const keyboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '*'];
-    const { coins, moneyLeft, productsLeft, sumInDispenser, changeMoneyDispenser, addCoinsToMachine, giveProduct, error, userTakesMoney } = props
-    const [moneyInserted, setMoneyInserted] = useState(0)
+    const { coins, moneyLeft, productsLeft, changeMoneyDispenser, addCoinsToMachine, giveProduct, error, userTakesMoney } = props
     const [amountGiven, setAmountGiven] = useState(0)
 
 

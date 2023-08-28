@@ -6,15 +6,23 @@
     position: relative;
     width: 4em;
     height: 4em;
+    border: rgb(232, 144, 144) solid 3px;
+    border-radius: 1em;
     padding: .8em;
-    color: red;
+    font-weight: bold;
+    color: white;
     background-image: url('../../../images/cart_icon.png');
+    background-color: rgba(245, 220, 220, 0.806);
     background-repeat: no-repeat;
     background-size: contain;
     grid-column: 12;
 }
+.cart-reduced:hover{
+    transform: scale(1.25);
+    cursor: pointer;
+} 
 
-.cart {
+.cart-shop {
     position: fixed;
     width: 80vw;
     height: 80vh;
@@ -120,7 +128,7 @@
 }
 
 
-.item{
+.product-item{
     min-height: var(--img-height);
     display: grid;
     grid-template-columns: repeat(auto-fill , 400px);
