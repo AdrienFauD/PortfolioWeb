@@ -7,6 +7,7 @@ import Project from './routes/projects';
 import Home from './routes/home';
 import Shop from './components/shop/shop';
 import Product from './components/shop/product';
+import Dispenser from './components/dispenser/dispenser';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/projects' element={<Project />} />
+            <Route path='/dispenser' element={<Dispenser />} />
             <Route path='/shop' >
               <Route index element={<Shop />} />
               <Route path='product/*' element={<Product />} >

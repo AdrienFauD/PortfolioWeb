@@ -1,12 +1,9 @@
-import React from "react"
 import './css/shop.css'
 import Cart from "./cart"
 import Store from "./store"
 import Order from "./order"
 import Navigation from './navigation'
-import Product from "./product"
 import { useState } from "react"
-import { Routes, Route } from "react-router-dom"
 import Search from "./search"
 
 export default function Shop() {
@@ -14,7 +11,7 @@ export default function Shop() {
     const [isToggled, setIsToggled] = useState(false)
     const [isAuth, setIsAuth] = useState(true)
     const [searchValue, setSearchValue] = useState('')
-    const [cartQuantity, setCartQuantity] = useState(0)
+    const [cart, setCart] = useState([])
 
     async function handleCloseCart() {
         setIsToggled(prev => !prev)
@@ -25,6 +22,7 @@ export default function Shop() {
     }
 
     const handleAddCart = (item) => {
+        setCart(prev => [...prev, item])
     }
 
     const handleSearch = (param) => {
@@ -33,27 +31,33 @@ export default function Shop() {
 
     return <>
         <div className="shop">
-            <Cart
-                isToggled={isToggled}
-                handleCloseCart={handleCloseCart}
-                cartQuantity={cartQuantity}
-            />
-            <Search
-                handleSearch={handleSearch}
-            />
-            <Navigation
-            />
-            <Store
-                searchValue={searchValue}
-                isAuth={isAuth}
-                handleAuth={handleAuth}
-                handleAddCart={handleAddCart}
-            />
-            <button
-                onClick={handleCloseCart}>
-                Toggle
-            </button>
-            <Order />
+            <div className='shop-cart'>
+                <Search
+                    handleSearch={handleSearch}
+                />
+                <Cart
+                    isToggled={isToggled}
+                    handleCloseCart={handleCloseCart}
+                    cart={cart}
+                />
+            </div>
+
+
+            <div className="shop-window">
+                <Navigation
+                />
+                <Store
+                    searchValue={searchValue}
+                    isAuth={isAuth}
+                    handleAuth={handleAuth}
+                    handleAddCart={handleAddCart}
+                />
+                <button
+                    onClick={handleCloseCart}>
+                    Toggle
+                </button>
+                <Order />
+            </div>
         </div>
     </>
 }

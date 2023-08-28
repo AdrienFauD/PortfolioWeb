@@ -1,27 +1,33 @@
 import React from "react"
-import { Outlet, Link} from "react-router-dom"
- 
+import { Outlet, Link } from "react-router-dom"
+
 export default function Project() {
     return (
         <>
             <div className="container text-center project-container" >
-                <div className="row  gap-3" style={{margin : '5vw'}}>
-                    <div className="project col-4 shadow rounded shadow-primary">
-                        projet
+                <div className="row  gap-3" style={{ margin: '5vw' }}>
+                    <Link className="project col-4 shadow rounded shadow-primary" to={'/dispenser'}>
+                        go to dispenser project
+                    </Link>
+                    <div className="col shadow-sm"  >
+
+                        <p className="fs-2 fw-bolder">
+                            Here is a vending machine I made to train javascript skills and how to to interact with a user input
+                        </p>
+                        <p>To do : rectify display error, add nice design,</p>
                     </div>
-                    <p className="col fs-2 fw-bolder shadow-sm">
-                        Here is a vending machine I made to train javascript skills and how to to interact with a user input
-                    </p>
                 </div>
-                <div className="row  gap-3" style={{margin : '5vw'}}>
-                    <div className="project col shadow rounded">
-                        That's some cool stuff right here
+                <div className="row  gap-3" style={{ margin: '5vw' }}>
+                    <Link className="project col shadow rounded" to={'/shop'}>
+                        Go to shop project
+                    </Link>
+                    <div className="col shadow-sm"  >
+                        <p className="fs-2 fw-bolder">
+                            Shopping project, where a user can fetch product from a database and add it to a cart 
+                        </p>
+                        <p>To do : add design element, display cart, fix category fetch</p>
                     </div>
-                    <p className="col fs-2 fw-bolder shadow-sm">
-                        Cool todolist used to add task, read, update and remove them when completed (or if lazyness won) 
-                    </p>
                 </div>
-                <Link to={'/shop'}>YOOOOOOOOOOOOOOOlo </Link>
             </div>
             <Outlet />
         </>

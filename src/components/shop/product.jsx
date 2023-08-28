@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import useFetch from './useFetch'
-import { useLocation, useSearchParams } from 'react-router-dom'
-import ErrorPage from '../../error-page'
-import Search from './search'
+import {  useSearchParams } from 'react-router-dom'
 
 
 export default function Product() {

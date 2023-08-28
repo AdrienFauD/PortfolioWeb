@@ -11,6 +11,7 @@
     background-image: url('../../../images/cart_icon.png');
     background-repeat: no-repeat;
     background-size: contain;
+    grid-column: 12;
 }
 
 .cart {

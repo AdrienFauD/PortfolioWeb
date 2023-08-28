@@ -1,13 +1,11 @@
 import useFetch from "./useFetch"
 
-import { Link, Outlet, Routes, useParams, useSearchParams } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 import './css/store.css'
-import { useState, } from "react"
 
 export default function Store(props) {
 
     const { searchValue, handleAddCart } = props
-    const [pseudoState, setPseudoState] = useState(true)
     const URL_BASIC = 'https://dummyjson.com/products?limit=20'
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q=' + searchValue
     let request = '';

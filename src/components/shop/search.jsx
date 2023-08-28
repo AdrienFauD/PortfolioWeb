@@ -18,11 +18,11 @@ export default function Search(props) {
     return (
         <form onSubmit={handleSubmitSearch}>
             <input
+                className='searchbar'
                 placeholder='Your research'
                 value={question}
                 onChange={e => setSearchParams({ q: e.target.value })}
                 type="number,text"
-                style={{ width: '100px', height: '100px' }}
             />
         </form>
 
