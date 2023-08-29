@@ -1,34 +1,32 @@
 import countDuplicatesObjectInArray from "../../functions/countDuplicatesObjectInArray";
 import { useState, useEffect } from "react";
+import ProductsInCart from "./productsInCart";
+import './css/cart.css'
 
 
 export default function Cart(props) {
     const { isToggled, handleIsLoged, cart } = props
-    const [cartItems, setCartItems] = useState([{},{}])
+    const [cartItems, setCartItems] = useState([{}, {}])
 
     const handlesort = () => {
         const dupes = countDuplicatesObjectInArray(cart)
-        console.log(dupes[0].count)
         setCartItems(dupes)
     }
     useEffect(() => {
-        console.log('Useeffect in cart.jsx')
         handlesort()
     }, [cart])
-    
+
 
     return <>
-        {
-            isToggled ?
-                <div className="cart-shop">
-                    <button onClick={handlesort} >AAAAAA</button>
-                    <div className="delete-cart" onClick={e => handleIsLoged()}>X</div>
-                </div>
-                : null 
-        }
 
-                <div className="cart-reduced">
-                    {cart.length}
-                </div>
+        <div className="cart-shop" style={{ display: isToggled ? "block" : "none" }} >
+            <div className="delete-cart" onClick={e => handleIsLoged()}>X</div>
+            <ProductsInCart cartItems={cartItems}/>
+        </div>
+
+        
+        <div className="cart-reduced">
+            {cart.length}
+        </div>
     </>
 }

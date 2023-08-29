@@ -9,6 +9,7 @@ import Shop from './components/shop/shop';
 import Product from './components/shop/product';
 import Dispenser from './components/dispenser/dispenser';
 
+
 function App() {
   return (
     <>
@@ -23,7 +24,7 @@ function App() {
             <Route path='/dispenser' element={<Dispenser />} />
             <Route path='/shop' >
               <Route index element={<Shop />} />
-              <Route path='product/*' element={<Product />} >
+              <Route path='*' element={<Product />} >
                 <Route path=':id' />
                 <Route path='*' element={<ErrorPage />} />
               </Route>

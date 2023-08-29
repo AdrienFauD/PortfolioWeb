@@ -1,17 +1,17 @@
 import { useState } from 'react'
 import useFetch from './useFetch'
-import {  useSearchParams } from 'react-router-dom'
+import { useSearchParams } from 'react-router-dom'
 
 
-export default function Product() {
+export default function Product(props) {
 
-    const [searchParams, setSearchParams ] = useSearchParams({q : "a", i : 0})
+    const { handleAddCart } = props
+    const [searchParams, setSearchParams] = useSearchParams({ q: "a", i: 0 })
     const question = searchParams.get("q")
-    const data = useFetch('https://dummyjson.com/products/search?q='+question)
+    const data = useFetch('https://dummyjson.com/products/search?q=' + question)
     const [currentImg, setCurrentImg] = useState(0)
 
 
-    
     const handleChangeImage = (index) => {
         setCurrentImg(index)
     }
@@ -26,7 +26,7 @@ export default function Product() {
                                 <img
                                     className='list-element'
                                     src={el}
-                                    onClick={() => handleChangeImage(index)}
+                                    onMouseEnter={() => handleChangeImage(index)}
                                 />
 
                             )}
@@ -48,7 +48,7 @@ export default function Product() {
                             {data.products[0].brand}
                         </div>
                         <div className='item-rating'>
-                            {data.products[0].rating}
+                            Rated {data.products[0].rating} / 5
                         </div>
                         {data.products[0].stock < 10 ?
                             <div className='item-stock'>
@@ -66,14 +66,19 @@ export default function Product() {
                         <div className='item-description'>
                             {data.products[0].description}
                         </div>
-                        <button className="add-cart-button" >Add to cart</button>
+                        <button 
+                        className="add-cart-button"
+                        onClick={(e) => handleAddCart(data.products[0])}
+                        >
+                            Add to cart
+                        </button>
                     </div>
 
                 </div>
-                 :
-                  <div>Result not found</div>}
-                  
-                
+                :
+                <div>Result not found</div>}
+
+
         </>
     )
 }

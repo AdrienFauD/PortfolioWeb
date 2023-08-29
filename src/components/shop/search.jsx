@@ -6,13 +6,13 @@ export default function Search(props) {
     const { handleSearch } = props
     const URL_SEARCH = 'https://dummyjson.com/products/search?q='
     const navigate = useNavigate()
-    const [searchParams, setSearchParams] = useSearchParams({ q: "" })  
-    const question = searchParams.get("q")
+    const [searchParams, setSearchParams] = useSearchParams({ s: "" })  
+    const question = searchParams.get("s")
 
     const handleSubmitSearch = (e) => {
         e.preventDefault()
         handleSearch(question)
-        navigate('/shop?q='+question)
+        navigate('/shop?s='+question)
     }
 
     return (
@@ -21,7 +21,7 @@ export default function Search(props) {
                 className='searchbar'
                 placeholder='Your research'
                 value={question}
-                onChange={e => setSearchParams({ q: e.target.value })}
+                onChange={e => setSearchParams({ s: e.target.value })}
                 type="number,text"
             />
         </form>

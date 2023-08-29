@@ -1,12 +1,14 @@
+import React from 'react'
 import './css/shop.css'
 import Cart from "./cart"
-import Store from "./store"
-import Order from "./order"
 import Login from './login'
-import Navigation from './navigation'
 import { useState } from "react"
 import Search from "./search"
 import Product from './product'
+import { Routes, Route } from 'react-router-dom'
+import WindowShop from './windowShop'
+
+export const ProductContext = React.createContext()
 
 export default function Shop() {
 
@@ -15,6 +17,7 @@ export default function Shop() {
     const [isProduct, setIsProduct] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [cart, setCart] = useState([])
+    const varibale = 'I am a variable'
 
     async function handleIsLoged() {
         setIsToggled(prev => !prev)
@@ -22,6 +25,9 @@ export default function Shop() {
     async function handleAuth(e) {
         e.preventDefault()
         setIsAuth(prev => !prev)
+    }
+    const handleProduct = () => {
+        setIsProduct(prev => !prev)
     }
 
     const handleAddCart = (item) => {
@@ -32,13 +38,13 @@ export default function Shop() {
         setSearchValue(param)
     }
 
-    return <>
+    return <ProductContext.Provider value={{ varibale }}>
         <div className="shop">
             <div className='shop-cart'>
                 <Search
                     handleSearch={handleSearch}
                 />
-                <Login 
+                <Login
                     handleIsLoged={handleIsLoged}
                 />
                 <Cart
@@ -48,18 +54,40 @@ export default function Shop() {
                 />
             </div>
 
-            
-            <div className="shop-window">
-                <Navigation
-                />
-                <Store
-                    searchValue={searchValue}
-                    isAuth={isAuth}
-                    handleAuth={handleAuth}
-                    handleAddCart={handleAddCart}
-                />
-                <Order />
-            </div>
+            <Routes >
+                <Route>
+                    <Route
+                        path='/'
+                        index
+                        element={<WindowShop
+                            isProduct={isProduct}
+                            searchValue={searchValue}
+                            isAuth={isAuth}
+                            handleAuth={handleAuth}
+                            handleAddCart={handleAddCart}
+                            handleProduct={handleProduct}
+                        />}
+                    />
+                </Route>
+
+            </Routes>
+
+            {/* {isProduct ?
+                <Product />
+                :
+                <div className="shop-window">
+                    <Navigation
+                    />
+                    <Store
+                        searchValue={searchValue}
+                        isAuth={isAuth}
+                        handleAuth={handleAuth}
+                        handleAddCart={handleAddCart}
+                    />
+                    <Order />
+                </div>
+            }
+             */}
         </div>
-    </>
+    </ProductContext.Provider >
 }

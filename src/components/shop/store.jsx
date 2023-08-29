@@ -1,11 +1,11 @@
 import useFetch from "./useFetch"
-
+import Product from "./product"
 import { Link, Outlet } from "react-router-dom"
 import './css/store.css'
 
 export default function Store(props) {
 
-    const { searchValue, handleAddCart } = props
+    const { searchValue, handleAddCart, handleProduct, isProduct } = props
     const URL_BASIC = 'https://dummyjson.com/products?limit=20'
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q=' + searchValue
     let request = '';
@@ -23,11 +23,21 @@ export default function Store(props) {
         <div
             className="store"
         >
+
+
+
             {data ?
                 Object.keys(data.products).map((product, i) => (
                     <div key={product} className="product-quickview" >
-                        <Link to={'./product?q=' + data["products"][i].title + '&i=' + data["products"][i].id} state={data["products"][i]}>
-                            <img className="img-qv" src={`${data['products'][i].thumbnail}`} />
+                        <Link
+                            to={'?q=' + data["products"][i].title + '&i=' + data["products"][i].id}
+                            state={data["products"][i]}
+                            onClick={(e) => handleProduct()}
+                        >
+                            <img
+                                className="img-qv"
+                                src={`${data['products'][i].thumbnail}`}
+                            />
                         </Link>
                         <Outlet context={{ item: data["products"][i].id }} />
                         <div className="title-qv">
@@ -48,6 +58,7 @@ export default function Store(props) {
                 ))
 
                 : null
+
             }
         </div>
     </>

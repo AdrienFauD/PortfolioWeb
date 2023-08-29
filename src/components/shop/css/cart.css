@@ -1,0 +1,18 @@
+.cart-shop{
+    animation: cartDisplay .2s ease-in 0s ;
+}
+@keyframes cartDisplay {
+    from{
+        transform: scale(0);
+    } 
+    to {
+        transform: scale(1);
+    }
+}
+.cart-list-item{
+    margin: auto;
+    width: 50%;
+    background-color: rgb(255, 255, 255);
+    min-height: 90%;
+    box-shadow: 2px 2px 5px rgb(39, 39, 39);
+}
