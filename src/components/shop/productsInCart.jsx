@@ -1,26 +1,38 @@
 
 import ProductInfos from "./productInfos"
+import Order from "./order"
+import { useEffect, useState } from "react"
+
 export default function ProductsInCart(props) {
 
     const { cartItems } = props
+    const [cartSize, setCartSize] = useState(0)
     const cartValues = cartItems[1].values
+
+    useEffect(() => {
+        if (typeof cartValues !== "undefined") {
+            setCartSize(cartValues.length)
+        }
+    }, [cartItems])
+
+
 
     let totalPrice = 0
     if (cartValues) {
         totalPrice = Object.keys(cartValues).reduce((acc, el) => {
-            return acc + (cartValues[el].price - cartValues[el].price*cartValues[el].discountPercentage / 100 )*cartItems[0].count[el]
+            return acc + (cartValues[el].price - cartValues[el].price * cartValues[el].discountPercentage / 100) * cartItems[0].count[el]
         }, 0)
     }
 
     return (
         <div className="cart-list-item">
-            {/* title, prices, name, count, stock, BASKET TOTAL, passer la commande, nombre article */}
             <h1 className="cart-list-title">Your cart</h1>
-            <div class="cart-product-info">
+            <div className="cart-product-info">
                 {cartValues ?
                     cartValues.length !== 0 ?
                         Object.keys(cartValues).map((key, index) => (
                             <ProductInfos
+                                key={key}
                                 className='item-in-cart'
                                 cartValues={cartValues}
                                 keyItem={key}
@@ -34,9 +46,12 @@ export default function ProductsInCart(props) {
             </div>
             <div className="cart-total-items">
                 Total ({cartItems[0].count ? cartItems[0].count.reduce((acc, el) => acc + el, 0) : null} articles ): <span>
-                        {totalPrice.toFixed(2)}€
+                    {totalPrice.toFixed(2)}€
                 </span>
             </div>
+            <Order
+                cartSize={cartSize}
+            />
         </ div>
     )
 }

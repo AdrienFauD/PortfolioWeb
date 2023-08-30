@@ -5,13 +5,13 @@ import { useSearchParams } from 'react-router-dom'
 
 export default function Product(props) {
 
-    const { handleAddCart } = props
+    const { handleAddCart, isAuth } = props
     const [searchParams, setSearchParams] = useSearchParams({ q: "a", i: 0 })
     const question = searchParams.get("q")
     const data = useFetch('https://dummyjson.com/products/search?q=' + question)
     const [currentImg, setCurrentImg] = useState(0)
 
-
+    
     const handleChangeImage = (index) => {
         setCurrentImg(index)
     }
@@ -67,8 +67,9 @@ export default function Product(props) {
                             {data.products[0].description}
                         </div>
                         <button 
+                        disabled={!isAuth}
                         className="add-cart-button"
-                        onClick={(e) => handleAddCart(data.products[0])}
+                        onClick={(e) => isAuth ? handleAddCart(data.products[0]) : null}
                         >
                             Add to cart
                         </button>
@@ -76,7 +77,7 @@ export default function Product(props) {
 
                 </div>
                 :
-                <div>Result not found</div>}
+                <div>Loading...</div>}
 
 
         </>

@@ -1,9 +1,9 @@
 export default function Login(props) {
-    const { handleIsLoged } = props
+    const { handleAuth, isAuth } = props
 
     return (
-        <div className='login-shop' onClick={(e) => handleIsLoged()}>
-            login
+        <div className='login-shop' onClick={(e) => handleAuth(e)}>
+            Log {isAuth ? "out" :'in'}
         </div>
     )
 }

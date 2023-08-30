@@ -1,16 +1,20 @@
 import useFetch from "./useFetch"
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useSearchParams } from "react-router-dom"
 import './css/store.css'
 
 export default function Store(props) {
 
-    const { searchValue, handleAddCart, handleProduct, isProduct } = props
-    const URL_BASIC = 'https://dummyjson.com/products?limit=20'
-    const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q=' + searchValue
+    const { searchValue, handleAddCart, handleProduct, isProduct, isAuth } = props
+    const URL_BASIC = 'https://dummyjson.com/products?limit=100'
+    const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
     let request = '';
+    const [searchParam] = useSearchParams({ s: '' })
+    const searchRes = searchParam.get('s')
 
-    if (searchValue !== '') {
-        request = URL_WITH_SEARCH
+    if (searchRes) {
+        request = URL_WITH_SEARCH + searchRes
+    } else if (searchValue !== '') {
+        request = URL_WITH_SEARCH + searchValue
     } else {
         request = URL_BASIC
     }
@@ -22,9 +26,6 @@ export default function Store(props) {
         <div
             className="store"
         >
-
-
-
             {data ?
                 Object.keys(data.products).map((product, i) => (
                     <div key={product} className="product-quickview" >
@@ -50,7 +51,12 @@ export default function Store(props) {
                         </div>
                         <div className="disc-price-qv">{(data["products"][i].price - (((data["products"][i].price) * data["products"][i].discountPercentage) / 100)).toFixed(2)}€</div>
                         <div className="stock-qv">{data["products"][i].stock < 10 ? "only " + `${data["products"][i].stock}` + " available !" : null}</div>
-                        <button className="add-cart-button" onClick={() => { handleAddCart(data["products"][i]) }}>Add to cart</button>
+                        <button
+                            disabled={!isAuth}
+                            className="add-cart-button"
+                            onClick={() =>  isAuth ? handleAddCart(data["products"][i]) : null }>
+                            Add to cart
+                        </button>
 
 
                     </div>

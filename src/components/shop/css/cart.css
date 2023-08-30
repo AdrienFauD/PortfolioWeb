@@ -1,8 +1,28 @@
+.cart-shop-mask{
+    
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 999;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, .5); 
+    animation:cartMask .2s ease-out 0s;
+    animation: name duration timing-function delay iteration-count direction fill-mode;
+
+}
 .cart-shop {
-    animation: cartDisplay .2s ease-in 0s;
+    animation: cartDisplay .3s ease-in 0s;
     overflow-y: scroll;
 }
-
+@keyframes cartMask {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: .5;
+    }
+}
 @keyframes cartDisplay {
     from {
         transform: scale(0);
@@ -45,6 +65,7 @@
 }
 
 .cart-product {
+    padding: 10%;
     grid-column: 2/6;
     text-align: left;
 }
@@ -84,4 +105,14 @@
 
 .cart-total-items span {
     font-weight: bold;
+}
+
+.orderPost, .orderNoPost{
+    text-decoration: none;
+    padding: 15px 25px 15px 25px;
+    border-radius: 5px;
+    background-color: wheat;
+}
+.orderPost:hover{
+    transform: scale(1.25);
 }

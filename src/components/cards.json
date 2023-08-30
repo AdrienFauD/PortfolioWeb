@@ -11,7 +11,7 @@
     },
     "2": {
         "title": "Update shop ",
-        "text": "Add design. Fix fetch category and cart display. Fix product route.",
+        "text": "Add design. Fix fetch category. Fix product route.",
         "link": "http://localhost:3000/shop"
     },
     "3": {
@@ -19,10 +19,9 @@
         "text": "This page currently does nothing. The sample used is a placeholder.",
         "link": "http://localhost:3000/contact"
     },
-    "4" : {
-        "title" : "Update product links",
-        "text" : "When in store, products that contain a '-' in their name are not accessed with the fetch request",
-        "link" : "http://localhost:3000/shop"
+    "4": {
+        "title": "Do a better usefetch",
+        "text": "find a way to make it more general iykyk",
+        "link": "http://localhost:3000/"
     }
-
 }

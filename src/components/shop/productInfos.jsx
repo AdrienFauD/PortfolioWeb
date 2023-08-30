@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function ProductInfos(props) {
 
     const { cartValues, keyItem, count } = props

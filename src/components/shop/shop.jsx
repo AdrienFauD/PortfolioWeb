@@ -17,7 +17,6 @@ export default function Shop() {
     const [isProduct, setIsProduct] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [cart, setCart] = useState([])
-    const varibale = 'I am a variable'
 
     async function handleIsLoged() {
         setIsToggled(prev => !prev)
@@ -25,6 +24,11 @@ export default function Shop() {
     async function handleAuth(e) {
         e.preventDefault()
         setIsAuth(prev => !prev)
+    }
+    async function handleOrder() {
+        setTimeout(() => {
+            setCart([])
+        }, 1000);
     }
     const handleProduct = () => {
         setIsProduct(prev => !prev)
@@ -38,16 +42,18 @@ export default function Shop() {
         setSearchValue(param)
     }
 
-    return <ProductContext.Provider value={{ varibale }}>
+    return <ProductContext.Provider value={{ handleOrder }}>
         <div className="shop">
             <div className='shop-cart'>
                 <Search
                     handleSearch={handleSearch}
                 />
                 <Login
-                    handleIsLoged={handleIsLoged}
+                    isAuth={isAuth}
+                    handleAuth={handleAuth}
                 />
                 <Cart
+                    isAuth={isAuth}
                     isToggled={isToggled}
                     handleIsLoged={handleIsLoged}
                     cart={cart}
@@ -67,27 +73,15 @@ export default function Shop() {
                             handleAddCart={handleAddCart}
                             handleProduct={handleProduct}
                         />}
+
+                    />
+                    <Route
+                        path='*'
+                        element={<Product />}
                     />
                 </Route>
 
             </Routes>
-
-            {/* {isProduct ?
-                <Product />
-                :
-                <div className="shop-window">
-                    <Navigation
-                    />
-                    <Store
-                        searchValue={searchValue}
-                        isAuth={isAuth}
-                        handleAuth={handleAuth}
-                        handleAddCart={handleAddCart}
-                    />
-                    <Order />
-                </div>
-            }
-             */}
         </div>
     </ProductContext.Provider >
 }
