@@ -1,5 +1,4 @@
 import useFetch from "./useFetch"
-import Product from "./product"
 import { Link, Outlet } from "react-router-dom"
 import './css/store.css'
 
@@ -40,9 +39,9 @@ export default function Store(props) {
                             />
                         </Link>
                         <Outlet context={{ item: data["products"][i].id }} />
-                        <div className="title-qv">
+                        <h6 className="title-qv">
                             {data["products"][i].title}
-                        </div>
+                        </h6>
                         <div className="discount-container">
                             <div className="price-qv">
                                 {data["products"][i].price}€

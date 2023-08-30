@@ -1,18 +1,87 @@
-.cart-shop{
-    animation: cartDisplay .2s ease-in 0s ;
+.cart-shop {
+    animation: cartDisplay .2s ease-in 0s;
+    overflow-y: scroll;
 }
+
 @keyframes cartDisplay {
-    from{
+    from {
         transform: scale(0);
-    } 
+    }
+
     to {
         transform: scale(1);
     }
 }
-.cart-list-item{
-    margin: auto;
-    width: 50%;
+
+.cart-list-item {
+    margin: 5% 10% 5% 10%;
+    width: 80%;
     background-color: rgb(255, 255, 255);
-    min-height: 90%;
+    min-height: 80%;
     box-shadow: 2px 2px 5px rgb(39, 39, 39);
+}
+
+.cart-list-title,
+.cart-item-row {
+    border-bottom: solid black 1px;
+}
+
+.cart-item-row {
+    margin: auto;
+    width: 80%;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.cart-thumbnail,
+.cart-thumbnail img {
+    overflow: hidden;
+    width: 180px;
+    height: 180px;
+    grid-column: 1/1;
+    object-fit: contain;
+    object-position: center;
+}
+
+.cart-product {
+    grid-column: 2/6;
+    text-align: left;
+}
+
+.cart-title {}
+
+.cart-price {}
+
+.cart-price-discountpercentage {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: .8em;
+    width: fit-content;
+    padding: 0px 5px 0px 5px;
+    background-color: rgb(176, 11, 11);
+    color: white;
+    border-radius: 5px;
+}
+
+.cart-final-price {
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.cart-stock {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(79, 135, 23);
+    font-weight: 300;
+}
+
+.cart-total-items {
+    font-size: 1.5em;
+    background-color: white;
+    padding: 15px 20px 15px 0px;
+    border-radius: 3px;
+    text-align: right;
+}
+
+.cart-total-items span {
+    font-weight: bold;
 }

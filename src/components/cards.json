@@ -18,6 +18,11 @@
         "title": "Update contact page ",
         "text": "This page currently does nothing. The sample used is a placeholder.",
         "link": "http://localhost:3000/contact"
+    },
+    "4" : {
+        "title" : "Update product links",
+        "text" : "When in store, products that contain a '-' in their name are not accessed with the fetch request",
+        "link" : "http://localhost:3000/shop"
     }
 
 }
