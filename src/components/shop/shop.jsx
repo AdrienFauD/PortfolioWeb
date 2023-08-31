@@ -13,7 +13,7 @@ export const ProductContext = React.createContext()
 export default function Shop() {
 
     const [isToggled, setIsToggled] = useState(false)
-    const [isAuth, setIsAuth] = useState(true)
+    const [isAuth, setIsAuth] = useState(false)
     const [isProduct, setIsProduct] = useState(false)
     const [searchValue, setSearchValue] = useState('')
     const [cart, setCart] = useState([])

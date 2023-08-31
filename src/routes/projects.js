@@ -14,7 +14,6 @@ export default function Project() {
                         <p className="fs-2 fw-bolder">
                             Here is a vending machine I made to train javascript skills and how to to interact with a user input
                         </p>
-                        <p>To do : rectify display error, add nice design, check type of input</p>
                     </div>
                 </div>
                 <div className="row  gap-3" style={{ margin: '5vw' }}>
@@ -25,7 +24,6 @@ export default function Project() {
                         <p className="fs-2 fw-bolder">
                             Shopping project, where a user can fetch product from a database and add it to a cart 
                         </p>
-                        <p>To do : add design element, display cart, fix category fetch, route for product</p>
                     </div>
                 </div>
             </div>

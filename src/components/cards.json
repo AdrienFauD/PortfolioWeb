@@ -6,12 +6,12 @@
     },
     "1": {
         "title": "Update dispenser",
-        "text": " Rectify design from css (wrong classname accross website). Check user input and process information so nothing unexpected happens. Add nice design. Add animations and stuff.",
+        "text": " Rectify design from css. Check user input and process information so nothing unexpected happens. Add nice design. Add animations and stuff.",
         "link": "http://localhost:3000/dispenser"
     },
     "2": {
         "title": "Update shop ",
-        "text": "Add design. Fix fetch category. Fix product route.",
+        "text": "Add design. Add order.",
         "link": "http://localhost:3000/shop"
     },
     "3": {

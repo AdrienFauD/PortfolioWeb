@@ -7,11 +7,15 @@ export default function Store(props) {
     const { searchValue, handleAddCart, handleProduct, isProduct, isAuth } = props
     const URL_BASIC = 'https://dummyjson.com/products?limit=100'
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
+    const URL_WITH_CATEGORY = 'https://dummyjson.com/products/category/'
     let request = '';
-    const [searchParam] = useSearchParams({ s: '' })
+    const [searchParam] = useSearchParams({ s: '', category : ''})
     const searchRes = searchParam.get('s')
+    const categoryRes = searchParam.get('category')
 
-    if (searchRes) {
+    if(categoryRes){
+        request = URL_WITH_CATEGORY + categoryRes
+    } else if (searchRes) {
         request = URL_WITH_SEARCH + searchRes
     } else if (searchValue !== '') {
         request = URL_WITH_SEARCH + searchValue
@@ -37,6 +41,8 @@ export default function Store(props) {
                             <img
                                 className="img-qv"
                                 src={`${data['products'][i].thumbnail}`}
+                                alt=''
+                            
                             />
                         </Link>
                         <Outlet context={{ item: data["products"][i].id }} />
@@ -50,7 +56,7 @@ export default function Store(props) {
                             <div className="disc-qv">-{(data["products"][i].discountPercentage).toFixed()}%</div>
                         </div>
                         <div className="disc-price-qv">{(data["products"][i].price - (((data["products"][i].price) * data["products"][i].discountPercentage) / 100)).toFixed(2)}€</div>
-                        <div className="stock-qv">{data["products"][i].stock < 10 ? "only " + `${data["products"][i].stock}` + " available !" : null}</div>
+                        <div className="stock-qv">{data["products"][i].stock < 10 ? `only ${data["products"][i].stock} available !`: null}</div>
                         <button
                             disabled={!isAuth}
                             className="add-cart-button"

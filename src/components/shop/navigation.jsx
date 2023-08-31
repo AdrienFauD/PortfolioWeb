@@ -10,7 +10,7 @@ export default function Navigation() {
             <ul>
                 {data?.map(el =>
                     <li key={el}>
-                        <Link to={`/shop?s=${el}`} style={{textDecoration: "none", color : 'black'}}>
+                        <Link to={`/shop?category=${el}`} style={{textDecoration: "none", color : 'black'}}>
                             {el.charAt(0).toUpperCase() + el.slice(1)}
                         </Link>
                     </li>
