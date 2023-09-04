@@ -22,7 +22,7 @@ class Dispenser extends React.Component {
                 ['fives', 0.05, 50.05]
             ],
             productsInDispenser: [
-                // name, total, price
+                // name, total, price, img
                 ['champagne', 3, 2, '🍾'],
                 ['soda', 1, 1.5, '🥤'],
                 ['coffee', 10, 0.5, '☕'],
@@ -55,7 +55,6 @@ class Dispenser extends React.Component {
                 acc[index]++
                 amount = (amount - current).toFixed(2)
             }
-
             return acc
         }, [])
 
@@ -127,11 +126,13 @@ class Dispenser extends React.Component {
             })
         }, 5000);
     }
+
     userTakesMoney = () => {
         this.setState({
             change : ''
         })
     }
+
     render() {
         return (
             <div className="dispenser">

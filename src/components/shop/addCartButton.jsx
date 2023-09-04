@@ -1,4 +1,4 @@
-import useHandleCartContext from './shop'
+import useHandleCartContext from './Shop'
 
 
 export default function AddCartButton(props) {

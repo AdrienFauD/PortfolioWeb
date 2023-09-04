@@ -1,11 +1,11 @@
-import useFetch from "./useFetch"
+import useFetch from "../../hooks/useFetch"
 import { Link, Outlet, useSearchParams } from "react-router-dom"
 import './css/store.css'
 
 export default function Store(props) {
 
     const { searchValue, handleAddCart, handleProduct, isProduct, isAuth } = props
-    const URL_BASIC = 'https://dummyjson.com/products?limit=100'
+    const URL_BASIC = 'https://dummyjson.com/products?limit=20'
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
     const URL_WITH_CATEGORY = 'https://dummyjson.com/products/category/'
     let request = '';
@@ -23,14 +23,13 @@ export default function Store(props) {
         request = URL_BASIC
     }
 
-    const data = useFetch(request)
-
+    const { data, err, loading } = useFetch(request)
 
     return <>
         <div
             className="store"
         >
-            {data ?
+            {data ? 
                 Object.keys(data.products).map((product, i) => (
                     <div key={product} className="product-quickview" >
                         <Link

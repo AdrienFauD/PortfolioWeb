@@ -5,8 +5,8 @@ import ErrorPage from "./error-page";
 import Contact from './routes/contact';
 import Project from './routes/projects';
 import Home from './routes/home';
-import Shop from './components/shop/shop';
-import Product from './components/shop/product';
+import Shop from './components/shop/Shop';
+import Product from './components/shop/Product';
 import Dispenser from './components/dispenser/dispenser';
 
 

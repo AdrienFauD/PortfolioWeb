@@ -1,6 +1,6 @@
 import countDuplicatesObjectInArray from "../../functions/countDuplicatesObjectInArray";
 import { useState, useEffect } from "react";
-import ProductsInCart from "./productsInCart";
+import ProductsInCart from "./ProductsInCart";
 import './css/cart.css'
 
 
@@ -8,12 +8,12 @@ export default function Cart(props) {
     const { isAuth, isToggled, handleIsLoged, cart } = props
     const [cartItems, setCartItems] = useState([{}, {}])
 
-    const handlesort = () => {
+    const handleSort = () => {
         const dupes = countDuplicatesObjectInArray(cart)
         setCartItems(dupes)
     }
     useEffect(() => {
-        handlesort()
+        handleSort()
     }, [cart])
 
 

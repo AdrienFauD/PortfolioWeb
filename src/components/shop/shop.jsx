@@ -1,12 +1,13 @@
 import React from 'react'
 import './css/shop.css'
-import Cart from "./cart"
-import Login from './login'
+import Cart from "./Cart"
+import Login from './Login'
 import { useState } from "react"
-import Search from "./search"
-import Product from './product'
+import Search from "./Search"
+import Product from './Product'
 import { Routes, Route } from 'react-router-dom'
-import WindowShop from './windowShop'
+import WindowShop from './WindowShop'
+import { isObjectsEqual } from '../../functions/isObjectsEqual'
 
 export const ProductContext = React.createContext()
 
@@ -35,16 +36,21 @@ export default function Shop() {
     }
 
     const handleAddCart = (item) => {
+        console.log(item)
         setCart(prev => [...prev, item])
+    }
+    const handleDeleteItemCart = (item) => {
+        const filteredCart = cart.filter((value) => !isObjectsEqual(value, item))
+        setCart(filteredCart)
     }
 
     const handleSearch = (param) => {
         setSearchValue(param)
     }
 
-    return <ProductContext.Provider value={{ handleOrder }}>
+    return <ProductContext.Provider value={{ handleOrder, handleDeleteItemCart }}>
         <div className="shop">
-            <div className='shop-cart'>
+            <div className='shop-topbar'>
                 <Search
                     handleSearch={handleSearch}
                 />

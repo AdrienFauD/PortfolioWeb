@@ -1,7 +1,7 @@
 import { useSearchParams } from "react-router-dom";
-import Navigation from "./navigation";
-import Store from "./store";
-import Product from "./product";
+import Navigation from "./Navigation";
+import Store from "./Store";
+import Product from "./Product";
 
 export default function WindowShop(props) {
     const { searchValue, isAuth, handleAddCart, handleAuth, isProduct, handleProduct } = props

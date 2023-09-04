@@ -5,6 +5,7 @@ import {
 } from "react-router-dom"
 import './index.css';
 import App from './App';
+import PosTest from './Pos.test';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -16,6 +17,7 @@ root.render(
   // <React.StrictMode>
   <BrowserRouter>
     <App />
+    {/* <PosTest /> */}
   </BrowserRouter>
     
   // </React.StrictMode>

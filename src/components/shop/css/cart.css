@@ -12,6 +12,7 @@
 
 }
 .cart-shop {
+    min-width: 400px;
     animation: cartDisplay .3s ease-in 0s;
     overflow-y: scroll;
 }
@@ -68,6 +69,12 @@
     padding: 10%;
     grid-column: 2/6;
     text-align: left;
+}
+.cart-delete{
+    margin: auto;
+    border : solid black 1px;
+    padding: 0 5px 0 5px;
+    border-radius: 5px ;
 }
 
 .cart-title {}

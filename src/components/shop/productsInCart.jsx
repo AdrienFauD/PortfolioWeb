@@ -1,6 +1,6 @@
 
-import ProductInfos from "./productInfos"
-import Order from "./order"
+import ProductInfos from "./ProductInfos"
+import Order from "./Order"
 import { useEffect, useState } from "react"
 
 export default function ProductsInCart(props) {
@@ -15,7 +15,7 @@ export default function ProductsInCart(props) {
         }
     }, [cartItems])
 
-
+    console.log(cartValues)
 
     let totalPrice = 0
     if (cartValues) {
@@ -38,7 +38,6 @@ export default function ProductsInCart(props) {
                                 keyItem={key}
                                 count={cartItems[0].count[index]}
                             />
-
                         ))
                         :
                         <p>Your cart is empty</p>

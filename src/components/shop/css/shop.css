@@ -1,34 +1,83 @@
-.shop{
+@import url(https://fonts.googleapis.com/css?family=Quicksand);
+
+.shop {
     display: flex;
     flex-direction: column;
-    
+    background-color: rgb(255, 245, 212);
 }
-.shop-cart{
+
+.shop-topbar {
     display: grid;
-    grid-template-columns: repeat(auto , 1fr);
+    grid-template-columns: repeat(auto, 1fr);
     grid-auto-flow: column;
     place-items: center;
-
 }
- .shop-window{
+
+.shop-window {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 }
-ul{
+
+ul {
+    font-family: "Quicksand";
     list-style-type: none;
-    width: 20vw;
+    width: 200px;
     text-align: left;
 }
-ul>li{
-    padding : .1em
+
+.wrapper-nav-list{
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    padding-top: calc(25%);
+    font-weight: bolder;
+    border: solid rgba(157, 237, 104, 0.818) 2px;
+    border-radius: 3px;
+    background-color: rgb(230, 245, 209);
+    
 }
-.searchbar{
-    grid-column: 6 / 12 ;
+.wrapper-nav-list:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    border-radius: 8px;
+}
+.wrapper-nav-list:active{
+    transform: rotateZ(90deg);
+}
+
+@media (min-width: 400px) {
+    .wrapper-nav-list{
+        display: none;
+    }
+}
+
+ul>li {
+    padding: .1em
+}
+
+.searchbar {
+    grid-column: 6 / 12;
     grid-row: 1;
+    padding : 5px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: 500;
 }
-.login-shop{
+
+.searchbar::placeholder {
+    font-style: italic;
+    font-weight: lighter;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.login-shop {
     grid-column: 11;
     border: solid black 1.5px;
     padding: 2em;
+}
+
+.login-shop:hover {
+    cursor: pointer;
 }

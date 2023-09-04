@@ -1,25 +1,59 @@
-export default function PosTest(){
-    const cartItems = [
-        {
-            count: [5, 3]
-        },
-        {
-            values: [
-                { id: 2, title: "la vie est un long fleuve tranquille" },
-                { id: 3, title: "memento" }
-            ]
+import { useEffect, useState, useRef } from "react"
+import './Pos.test.css'
+
+export default function PosTest() {
+
+    const [product, setProduct] = useState('🍐')
+    const [tank, setTank] = useState('')
+    const [productStyle, setProductStyle] = useState("product")
+    const [maskStyle, setMaskStyle] = useState("mask")
+    const [currentText, setCurrentText] = useState('');
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const text = 'la vita e bela'
+  
+    useEffect(() => {
+        if (currentIndex < text.length) {
+          const timeout = setTimeout(() => {
+            setCurrentText(prevText => prevText + text[currentIndex]);
+            setCurrentIndex(prevIndex => prevIndex + 1);
+          }, 100);
+      
+          return () => clearTimeout(timeout);
         }
-    ]
-    const cartValues = cartItems[1].values
-    console.log(cartValues[0].title)
+      }, [currentIndex]);
+
+    const handleChangeStyleMask = () => {
+        setMaskStyle("mask-down")
+        setTimeout(() => {
+            setProduct('')
+            setTank('🍐')
+        }, 3000);
+    }
+
+
+
     return (
         <>
-            {cartValues[0].title}
-            {Object.keys(cartValues).map((key, index) => (
-                <div >
-                    {cartValues[key].title}
+            <button className="btn" onClick={(e) => handleChangeStyleMask(e)}>Drop mask</button>
+            <button className="btn">TimeoutLetter</button>
+            
+            <div>
+                {currentText}
+            </div>
+            
+            <div className="container">
+                <div className={productStyle}>
+                    {product}
                 </div>
-            ))}
+                <div className={maskStyle}>
+                    {product}
+                </div>
+                <div className="con">
+                    <div className="test">
+                        {tank}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }

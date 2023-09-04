@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useFetch from './useFetch'
+import useFetch from '../../hooks/useFetch'
 import { useSearchParams } from 'react-router-dom'
 
 
@@ -8,7 +8,7 @@ export default function Product(props) {
     const { handleAddCart, isAuth } = props
     const [searchParams, setSearchParams] = useSearchParams({ q: "a", i: 0 })
     const question = searchParams.get("q")
-    const data = useFetch('https://dummyjson.com/products/search?q=' + question)
+    const { data, err, loading } = useFetch('https://dummyjson.com/products/search?q=' + question)
     const [currentImg, setCurrentImg] = useState(0)
 
     

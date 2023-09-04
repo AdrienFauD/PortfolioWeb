@@ -23,5 +23,10 @@
         "title": "Do a better usefetch",
         "text": "find a way to make it more general iykyk",
         "link": "http://localhost:3000/"
+    },
+    "5": {
+        "title": "Big Cleanup",
+        "text": "get a cleaner file management",
+        "link": "http://localhost:3000/"
     }
 }
