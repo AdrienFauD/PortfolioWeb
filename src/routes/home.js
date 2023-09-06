@@ -33,7 +33,6 @@ export default function Home() {
     }
 
     const handleDelete = (el) => {
-        console.log(Object.keys(cards[el]).length)
         setCards(prev => ({
             ...prev,
             [el]: ''

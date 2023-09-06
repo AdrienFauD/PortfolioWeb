@@ -27,9 +27,10 @@ export default function Cart(props) {
 
         </div>
 
-        <div className="cart-reduced" onClick={handleIsLoged}>
+
+         </>   : null}
+         <div className="cart-reduced" onClick={handleIsLoged}>
             {cart.length}
         </div>
-         </>   : null}
     </>
 }

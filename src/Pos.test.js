@@ -11,23 +11,23 @@ export default function PosTest() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const text = 'la vita e bela'
   
-    useEffect(() => {
-        if (currentIndex < text.length) {
-          const timeout = setTimeout(() => {
-            setCurrentText(prevText => prevText + text[currentIndex]);
-            setCurrentIndex(prevIndex => prevIndex + 1);
-          }, 100);
+    // useEffect(() => {
+    //     if (currentIndex < text.length) {
+    //       const timeout = setTimeout(() => {
+    //         setCurrentText(prevText => prevText + text[currentIndex]);
+    //         setCurrentIndex(prevIndex => prevIndex + 1);
+    //       }, 100);
       
-          return () => clearTimeout(timeout);
-        }
-      }, [currentIndex]);
+    //       return () => clearTimeout(timeout);
+    //     }
+    //   }, [currentIndex]);
 
     const handleChangeStyleMask = () => {
-        setMaskStyle("mask-down")
-        setTimeout(() => {
-            setProduct('')
-            setTank('🍐')
-        }, 3000);
+        // setMaskStyle("mask-down")
+        // setTimeout(() => {
+        //     setProduct('')
+        //     setTank('🍐')
+        // }, 3000);
     }
 
 
@@ -43,16 +43,11 @@ export default function PosTest() {
             
             <div className="container">
                 <div className={productStyle}>
-                    {product}
                 </div>
                 <div className={maskStyle}>
                     {product}
                 </div>
-                <div className="con">
-                    <div className="test">
-                        {tank}
-                    </div>
-                </div>
+
             </div>
         </>
     )

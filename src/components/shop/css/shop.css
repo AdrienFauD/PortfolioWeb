@@ -3,6 +3,7 @@
 .shop {
     display: flex;
     flex-direction: column;
+    min-height: 80vh;
     background-color: rgb(255, 245, 212);
 }
 
@@ -11,6 +12,9 @@
     grid-template-columns: repeat(auto, 1fr);
     grid-auto-flow: column;
     place-items: center;
+    border-bottom: solid white 1px;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 .shop-window {
@@ -20,35 +24,65 @@
     justify-content: center;
 }
 
-ul {
+.shop-window ul {
     font-family: "Quicksand";
     list-style-type: none;
     width: 200px;
     text-align: left;
+    overflow: hidden;
+    padding: 10px;
 }
 
-.wrapper-nav-list{
+.shop-window>ul {
+    border-right: solid black 1px;
+    border-bottom: solid black 1px;
+    animation: navlistAnim .2s ease-out 0s forwards;
+}
+
+@keyframes navlistAnim {
+    from {
+        height: 0px;
+    }
+
+    to {    
+        height: 400px;
+    }
+}
+
+.wrapper-nav-list {
     width: 200px;
     height: 200px;
     margin: auto;
     padding-top: calc(25%);
     font-weight: bolder;
-    border: solid rgba(157, 237, 104, 0.818) 2px;
+    border: solid rgba(157, 237, 104, 0.366) 2px;
     border-radius: 3px;
-    background-color: rgb(230, 245, 209);
-    
+    background-color: rgba(87, 102, 66, 0.128);
 }
-.wrapper-nav-list:hover{
+
+.wrapper-nav-list:hover span {
     cursor: pointer;
     transform: scale(1.1);
     border-radius: 8px;
 }
-.wrapper-nav-list:active{
-    transform: rotateZ(90deg);
+.wrapper-nav-list:hover span, .wrapper-nav-list:active span{
+    display: block;
+    animation: navlistRotate .1s linear 0s;
+    animation-fill-mode: forwards;
+
+}
+
+@keyframes navlistRotate {
+    from {
+        transform: rotateZ(0deg) scale(1.0);
+    }
+    to{
+        transform: rotateZ(90deg) scale(1.5);
+    }
 }
 
 @media (min-width: 400px) {
-    .wrapper-nav-list{
+    .wrapper-nav-list {
         display: none;
     }
 }
@@ -60,8 +94,8 @@ ul>li {
 .searchbar {
     grid-column: 6 / 12;
     grid-row: 1;
-    padding : 5px;
-    border-radius: 5px;
+    padding: 5px;
+    border-radius: 10px 0 0 10px;
     font-size: 1.2em;
     font-weight: 500;
 }
@@ -70,6 +104,12 @@ ul>li {
     font-style: italic;
     font-weight: lighter;
     color: rgba(0, 0, 0, 0.4);
+}
+
+.search-lens{
+    padding: 5px;
+    font-size: 1.2em;
+    border-radius: 0 10px 10px 0;
 }
 
 .login-shop {

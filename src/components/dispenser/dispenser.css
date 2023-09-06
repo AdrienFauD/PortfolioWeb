@@ -10,9 +10,12 @@
     height: 100%;
     text-align: center;
 }
+.coin-inserter input {
+    max-width: 100%;
+}
 
 .dispenser {
-    background-color: rgba(215, 187, 187, 0.887);
+    background-color: rgba(69, 76, 79, 0.887);
     width: calc(50 * 1vw);
     min-width: var(--width-dispenser-min);
     max-width: var(--width-dispenser-max);
@@ -22,6 +25,7 @@
     margin: auto;
     margin-top: 20px;
     color: rgb(0, 0, 0);
+    overflow: hidden;
     display: grid;
     place-items: center;
     grid-template-columns: 70% 30%;
@@ -68,12 +72,16 @@
     padding: 5%;
     margin: 0;
     justify-content: stretch;
+    z-index: 5;
+    overflow: hidden;
     width: 90%;
     height: 90%;
     grid-area: 4 / 1 / 4 / 1;
 }
 
 .cart {
+    font-size: 1.5em;
+    margin: auto;
     position: relative;
     text-align: center;
     color: white;
@@ -81,6 +89,7 @@
     background-color: rgb(94, 94, 100);
     height: 100%;
     width: 95%;
+    overflow: hidden;
 }
 
 .item {
@@ -118,7 +127,6 @@
     }
 }
 
-
 .pad-num {
     color: aliceblue;
     cursor: pointer;
@@ -128,10 +136,6 @@
     background-color: slategray;
 }
 
-
-
-
-
 .coin-box {
     background-color: aliceblue;
     height: 20%;
@@ -139,3 +143,34 @@
     padding: auto;
     margin: auto;
 }
+
+.mask-anim-disp{
+    position: absolute;
+    height: 100%;
+    font-size: 3em;
+    margin: auto;
+    padding-left: 20%;
+    padding-top: 39px;
+    max-height: 3em;
+    z-index: 1;
+    animation: productFall 2s ease-in-out .1s ;
+}
+@keyframes productFall {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: translate(0) scale(1.2);
+    }
+
+    55% {
+        transform: translate(0) scale(1.2);
+    }
+
+    100% {
+        transform: translateY(30em) scale(1.2);
+
+    }
+}
+

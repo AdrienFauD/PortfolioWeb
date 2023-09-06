@@ -3,7 +3,7 @@ import MoneyBoard from "./moneyBoard"
 import ProductBoard from "./productBoard"
 import React, { useState } from "react"
 import DrinkBox from "./drinkBox"
-import ErrorPanel from "./errorPanel"
+import MessagePanel from "./messagePanel"
 
 
 class Dispenser extends React.Component {
@@ -34,14 +34,18 @@ class Dispenser extends React.Component {
             ],
             itemInBox: "",
             errorMessage: '',
-            change: ''
+            change: '',
+            removeItem : null,
         }
     }
 
     // change the amount of item the user took
     handleProductsChange = (userChoice) => {
-        this.state.itemInBox += this.state.productsInDispenser[userChoice][3]
         this.state.productsInDispenser[userChoice][1] -= 1
+        setTimeout(() => {
+            this.state.itemInBox += this.state.productsInDispenser[userChoice][3]
+        }, 2000);
+        this.state.removeItem = userChoice+1
     }
 
 
@@ -91,7 +95,7 @@ class Dispenser extends React.Component {
         let errorMessage = ''
         switch (param) {
             case "NaN" : 
-                errorMessage = "this machine only accept numbers"
+                errorMessage = "please insert money"
                 break
             case 0:
                 errorMessage = "out of product"
@@ -115,6 +119,7 @@ class Dispenser extends React.Component {
                 errorMessage = "take your item"
                 break
             default:
+                errorMessage = 'an error occured'
                 break
         }
         this.setState({
@@ -133,15 +138,22 @@ class Dispenser extends React.Component {
         })
     }
 
+    handleResetAnim = () => {
+        this.setState({removeItem : null})
+
+    }
+
     render() {
         return (
             <div className="dispenser">
                 <ProductBoard
                     productsLeft={this.state.productsInDispenser}
                     changeProductDispenser={this.handleProductsChange}
+                    removeItem = {this.state.removeItem}
+                    handleResetAnim = {this.handleResetAnim}
                 />
-                <ErrorPanel
-                    err={this.state.errorMessage}
+                <MessagePanel
+                    msg={this.state.errorMessage}
                 />
                 <MoneyBoard
                     error={this.handleError}

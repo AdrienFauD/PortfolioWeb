@@ -1,32 +1,37 @@
 {
     "0": {
-        "title": "Update design ",
-        "text": "Update all the design in the portfolio to make it more appealing. ",
+        "title": "Design ",
+        "text": "Factorization variables css. Update all the design in the portfolio to make it more appealing. ",
         "link": "http://localhost:3000/"
     },
     "1": {
-        "title": "Update dispenser",
-        "text": " Rectify design from css. Check user input and process information so nothing unexpected happens. Add nice design. Add animations and stuff.",
+        "title": "Dispenser",
+        "text": "  Add delay to user stuff so the animatins can be used properly. Add animations. Try adding sounds, but it may be bad ux design.",
         "link": "http://localhost:3000/dispenser"
     },
     "2": {
-        "title": "Update shop ",
-        "text": "Add design. Add order.",
+        "title": "Shop ",
+        "text": "No result found. Put categories next to searchbar, displayed when hovered. Add loading and error response from fetching. Update authentification with user custom name and password",
         "link": "http://localhost:3000/shop"
     },
     "3": {
-        "title": "Update contact page ",
-        "text": "This page currently does nothing. The sample used is a placeholder.",
+        "title": "Contact page ",
+        "text": "Add contact form : who, what (anonymous ? email ?). Link it to emailJS ?",
         "link": "http://localhost:3000/contact"
     },
     "4": {
-        "title": "Do a better usefetch",
-        "text": "find a way to make it more general iykyk",
-        "link": "http://localhost:3000/"
-    },
-    "5": {
         "title": "Big Cleanup",
         "text": "get a cleaner file management",
         "link": "http://localhost:3000/"
+    },
+    "5" : {
+        "title" : "Projects",
+        "text" : "Add images to show projects.",
+        "link": "http://localhost:3000/projects"
+    },
+    "6" : {
+        "title" : "Home",
+        "text" : "Display something else than those cards",
+        "link" : "http://localhost:3000/"
     }
 }

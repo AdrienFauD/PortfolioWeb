@@ -10,14 +10,21 @@ export default function MoneyBoard(props) {
 
     // when the change has been inserted, the user choose what product he wants
     const handleInsertMoney = (userChoice) => {
+        console.log(typeof amountGiven)
         if (userChoice >= 8 || typeof userChoice !== 'number') { return }
         const amount = parseFloat(amountGiven).toFixed(2)
         const productValue = productsLeft[userChoice][2]
+
+        if (amountGiven === 0 || amountGiven === '') {
+            error("NaN")
+            return
+        }
         // no product left
         if (productsLeft[userChoice][1] === 0) {
             error(0)
             return
         }
+
 
         if ((amount * 100).toFixed(2) % 5 != 0.00) {
             error(1)
@@ -42,8 +49,8 @@ export default function MoneyBoard(props) {
         else if (amount >= productValue) {
             addCoinsToMachine(amountGiven)
             giveProduct(userChoice)
-            if (amount === productValue) error("")
-            else {
+            error("")
+            if (amount !== productValue) {
                 let changeToGiveBack = amount - productValue
                 giveMoney(changeToGiveBack.toFixed(2))
 
@@ -57,7 +64,7 @@ export default function MoneyBoard(props) {
 
     // handles what happens with the money when it is in the machine
     const giveMoney = (moneyInsertedNum) => {
-        
+
         let num = moneyInsertedNum
         let money = [...moneyLeft]
         let arr = []
@@ -128,8 +135,10 @@ export default function MoneyBoard(props) {
 
         </div>
             <div className="coin-inserter" >
-                Type the amount you want to spend (max 2€): 
+                Type the amount you want to spend (max 2€), then select your item:
                 <input
+                    type="number"
+                    min='0'
                     value={amountGiven}
                     onChange={e => setAmountGiven(e.target.value)}
                 />

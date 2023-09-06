@@ -5,24 +5,27 @@
 
 .mask {
     height: 100px;
-    position: relative;
-    top: -1.5em;
     border: solid red 1px;
     font-size: 2em;
 }
 
-.mask-down {
-    /* content: '🍐'; */
-    height: 100px;
-    width: 100px;
-    position: relative;
-    top: -1.5em;
-    border: solid red 1px;
-    font-size: 2em;
-    animation: productFall 3s ease-in 0s;
-    animation-fill-mode: forwards;
+.mask::after {
+    /* content:'🍐'; */
+    content: url('./images/product_locker.svg');
+    z-index: -1;
+    display: inline-block;
+    position: absolute;
+    /* animation: animask 2s linear 0s infinite ; */
 }
 
+@keyframes animask {
+    from{
+        transform: scale(1);
+    }
+    to{
+        transform: scale(3);
+    }
+}
 @keyframes productFall {
     0% {
         transform: scale(1);
@@ -48,10 +51,4 @@
     font-size: 2em;
     background-color: wheat;
     border-radius: 0 0px 20px 20px;
-}
-
-.con:hover .test {
-    transform: rotateX(1deg);
-    clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 10% 50%);
-
 }

@@ -20,8 +20,13 @@ export default function Search(props) {
                 placeholder='Your research'
                 value={question}
                 onChange={e => setQuestions( e.target.value )}
-                type="number,text"
+                type="search"
             />
+            <button 
+            className='search-lens'
+            onClick={handleSubmitSearch}>
+                🔎
+                </button>
         </form>
 
     )
