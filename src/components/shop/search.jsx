@@ -19,14 +19,14 @@ export default function Search(props) {
                 className='searchbar'
                 placeholder='Your research'
                 value={question}
-                onChange={e => setQuestions( e.target.value )}
+                onChange={e => setQuestions(e.target.value)}
                 type="search"
             />
-            <button 
-            className='search-lens'
-            onClick={handleSubmitSearch}>
+            <button
+                className='search-lens'
+                onClick={handleSubmitSearch}>
                 🔎
-                </button>
+            </button>
         </form>
 
     )

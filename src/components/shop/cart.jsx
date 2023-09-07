@@ -18,18 +18,18 @@ export default function Cart(props) {
 
 
     return <>
-        {isAuth ? 
-        <><div className="cart-shop-mask" style={{ display: isToggled ? "block" : "none" }}>
-            <div className="cart-shop"  >
-                <div className="delete-cart" onClick={e => handleIsLoged()}>X</div>
-                <ProductsInCart cartItems={cartItems} />
-            </div>
+        {isAuth ?
+            <>
+                <div className="cart-shop-mask" style={{ display: isToggled ? "block" : "none" }}>
+                    <div className="cart-shop"  >
+                        <div className="delete-cart" onClick={e => handleIsLoged()}>X</div>
+                        <ProductsInCart cartItems={cartItems} />
+                    </div>
+                </div>
 
-        </div>
 
-
-         </>   : null}
-         <div className="cart-reduced" onClick={handleIsLoged}>
+            </> : null}
+        <div className="cart-reduced" onClick={handleIsLoged}>
             {cart.length}
         </div>
     </>

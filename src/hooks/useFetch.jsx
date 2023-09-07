@@ -3,24 +3,28 @@ import { useEffect, useState } from "react"
 
 export default function useFetch(url) {
 
-    const [ data, setData] = useState()
-    const [err, setErr] = useState()
-    const [loading, setLoading] = useState('true')
+    const [data, setData] = useState()
+    const [errStatus, setErrStatus] = useState()
 
     useEffect(() => {
         (async () => {
-            await fetch(url)
+            await fetch(url, {
+                headers: {
+                    "Content-Type": "application/json",
+                  }
+            })
                 .then(response => {
-                    if(!response.ok) {
-                        throw new Error('Network reponse failed')
+                    if (!response.ok) {
+                        throw(response.status)
                     }
                     return response.json()
                 })
                 .then(data => setData(data))
-                .then(loading => setLoading(false))
-                .catch((error) => setErr(error))
+                .catch((errStatus) => {
+                    setErrStatus(errStatus)
+                })
         })()
     }, [url])
-
-    return { data, err, loading }
+    
+    return { data, errStatus }
 }

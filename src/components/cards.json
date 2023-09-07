@@ -6,23 +6,18 @@
     },
     "1": {
         "title": "Dispenser",
-        "text": "  Add delay to user stuff so the animatins can be used properly. Add animations. Try adding sounds, but it may be bad ux design.",
+        "text": "Try adding sounds, but it may be bad ux design.",
         "link": "http://localhost:3000/dispenser"
     },
     "2": {
         "title": "Shop ",
-        "text": "No result found. Put categories next to searchbar, displayed when hovered. Add loading and error response from fetching. Update authentification with user custom name and password",
+        "text": "Update authentification with user custom name and password",
         "link": "http://localhost:3000/shop"
     },
     "3": {
         "title": "Contact page ",
         "text": "Add contact form : who, what (anonymous ? email ?). Link it to emailJS ?",
         "link": "http://localhost:3000/contact"
-    },
-    "4": {
-        "title": "Big Cleanup",
-        "text": "get a cleaner file management",
-        "link": "http://localhost:3000/"
     },
     "5" : {
         "title" : "Projects",

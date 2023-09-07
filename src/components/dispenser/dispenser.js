@@ -91,6 +91,7 @@ class Dispenser extends React.Component {
         })
     }
 
+
     handleError = (param, value) => {
         let errorMessage = ''
         switch (param) {
@@ -110,13 +111,13 @@ class Dispenser extends React.Component {
                 errorMessage = "where is the money Lebowski"
                 break
             case 4:
-                errorMessage = "you need to insert " + value
+                errorMessage = "you need to insert " + value + "€"
                 break
             case 5:
                 errorMessage = 'not enough change in the machine'
                 break
             case '':
-                errorMessage = "take your item"
+                errorMessage = "you can take your item"
                 break
             default:
                 errorMessage = 'an error occured'
@@ -129,7 +130,7 @@ class Dispenser extends React.Component {
             this.setState({
                 errorMessage: ''
             })
-        }, 5000);
+        }, 4000);
     }
 
     userTakesMoney = () => {

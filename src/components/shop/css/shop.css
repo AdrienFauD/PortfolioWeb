@@ -21,7 +21,8 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+
 }
 
 .shop-window ul {
@@ -120,4 +121,32 @@ ul>li {
 
 .login-shop:hover {
     cursor: pointer;
+}
+
+.loading-shop{
+    font-size: 5em;
+    display: flex;
+    flex-direction: column;
+}
+.loading-shop-svg{
+    background-image: url("../../../images/loading_icon.svg");
+    background-size: cover;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+    animation: loadingAnim 0.3s linear 0s infinite ;
+}
+
+@keyframes loadingAnim {
+    0%{
+        transform: rotateZ(0deg);
+    }
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+.search-fail-size{
+    font-size: 4em;
+    margin: auto;
 }

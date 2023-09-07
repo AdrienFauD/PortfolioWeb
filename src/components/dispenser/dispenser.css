@@ -67,16 +67,24 @@
     height: auto;
 }
 
+.mask-drink-box{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    grid-area: 4 / 1 / 4 / 1;
+    z-index: 999;
+    overflow: hidden;
+}
+
 .drink-box {
     background-color: rgb(19, 19, 19);
     padding: 5%;
-    margin: 0;
     justify-content: stretch;
+    margin: auto;
     z-index: 5;
     overflow: hidden;
-    width: 90%;
-    height: 90%;
-    grid-area: 4 / 1 / 4 / 1;
+    height: 100%;
+    
 }
 
 .cart {

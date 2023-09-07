@@ -2,6 +2,7 @@ import useFetch from "../../hooks/useFetch"
 import { Link, Outlet, useSearchParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import './css/store.css'
+import LoadingFetch from "./LoadingFetch"
 
 export default function Store(props) {
 
@@ -25,14 +26,18 @@ export default function Store(props) {
         } else {
             setRequest(URL_BASIC)
         }
-    }, [request, limit])
+    }, [request, categoryRes, searchRes, searchValue, URL_BASIC])
 
-    const { data, err, loading } = useFetch(request)
+    console.log(request)
+    const { data, errStatus } = useFetch(request)
 
     const handleLoadMore = () => {
-
         setLimit(limit + 20)
     }
+
+    if(errStatus === 404) return <p className="search-fail-size">There is an error {errStatus}</p>
+    if(!data) return <LoadingFetch/>
+    if(data?.products.length === 0) return <p className="search-fail-size">No result found :-( </p>
 
     return <>
         <div
@@ -79,13 +84,16 @@ export default function Store(props) {
                 : null
 
             }
-            <div className="load-more">
-            <button
-                className="load-more-btn"
-                onClick={(e) => handleLoadMore()}>
-                Load more
-            </button>
-                    </div>
+            {limit > data?.products?.length ? null : 
+                        <div className="load-more">
+                <button
+                    className="load-more-btn"
+                    onClick={(e) => handleLoadMore()}>
+                    Load more
+                </button>
+            </div>
+            }
+
         </div>
     </>
 }

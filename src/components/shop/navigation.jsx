@@ -2,9 +2,10 @@ import useFetch from '../../hooks/useFetch'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
+
 export default function Navigation() {
 
-    const { data, err, loading } = useFetch('https://dummyjson.com/products/categories')
+    const { data } = useFetch('https://dummyjson.com/products/categories')
     const [toggleList, setToggleList] = useState(true)
 
     const handleShowList = () => {
@@ -16,6 +17,8 @@ export default function Navigation() {
             setToggleList(false)
         }
     }, [])
+
+    if(!data) return 
 
     return (
         <>

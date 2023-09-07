@@ -83,7 +83,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <div className=" row">
+                <div className=" row m-0">
                     {Object.keys(cards).map((keyName, i) => (
                         Object.keys(cards[i] || {}).length > 0 ?
                             <div key={keyName} className='col card' style={{ maxWidth: '18rem', minWidth: '16rem', height: '100%', maxHeight: "300px" }}>

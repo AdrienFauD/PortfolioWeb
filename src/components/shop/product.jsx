@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import useFetch from '../../hooks/useFetch'
 import { useSearchParams } from 'react-router-dom'
+import LoadingFetch from './LoadingFetch'
 
 
 export default function Product(props) {
@@ -77,7 +78,7 @@ export default function Product(props) {
 
                 </div>
                 :
-                <div>Loading...</div>}
+                <LoadingFetch />}
 
 
         </>

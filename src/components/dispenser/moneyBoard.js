@@ -5,12 +5,16 @@ export default function MoneyBoard(props) {
     const keyboard = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '*'];
     const { coins, moneyLeft, productsLeft, changeMoneyDispenser, addCoinsToMachine, giveProduct, error, userTakesMoney } = props
     const [amountGiven, setAmountGiven] = useState('')
-
+    const [isDisabled, setIsDisabled] = useState(false)
 
 
     // when the change has been inserted, the user choose what product he wants
     const handleInsertMoney = (userChoice) => {
-        console.log(typeof amountGiven)
+        console.log("jey")
+        setIsDisabled(true)
+        setTimeout(() => {
+            setIsDisabled(false)
+        }, 4000);
         if (userChoice >= 8 || typeof userChoice !== 'number') { return }
         const amount = parseFloat(amountGiven).toFixed(2)
         const productValue = productsLeft[userChoice][2]
@@ -128,9 +132,9 @@ export default function MoneyBoard(props) {
         // creating the keyboard dynamically 
         <><div className="choice-pad">
             {keyboard.map(el => {
-                if (el + 1 === 10) return <div className='pad-num' onClick={() => handleInsertMoney(0)} style={{ gridArea: "4/2" }}>0</div>
-                if (el === '*') return <div className='pad-num' onClick={() => giveMoney()} style={{ gridArea: "4/3" }}>*</div>
-                else return (<div className='pad-num' onClick={() => handleInsertMoney(el)}>{el + 1}</div>)
+                if (el + 1 === 10) return <button className='pad-num' disabled={isDisabled} onClick={() => handleInsertMoney(0)} style={{ gridArea: "4/2" }}>0</button>
+                if (el === '*') return <button className='pad-num' disabled={isDisabled} onClick={() => giveMoney()} style={{ gridArea: "4/3" }}>*</button>
+                else return (<button className='pad-num' disabled={isDisabled} onClick={() => handleInsertMoney(el)}>{el + 1}</button>)
             })}
 
         </div>

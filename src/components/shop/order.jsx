@@ -21,7 +21,9 @@ export default function Order(props) {
 
     }, [cartSize])
 
-
+    if(cartSize === 0 ){
+        return null
+    }
 
     return <>
         <button
