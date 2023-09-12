@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import '../components/css/home.css'
-import data from "../components/cards.json"
+import '../css/home.css'
+import data from "../../cards.json"
 
 export default function Home() {
     const [cards, setCards] = useState({

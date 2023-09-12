@@ -15,7 +15,7 @@ export default function Store(props) {
     const searchRes = searchParam.get('s')
     const categoryRes = searchParam.get('category')
     const [request, setRequest] = useState('')
-
+    
     useEffect(() => {
         if (categoryRes) {
             setRequest(URL_WITH_CATEGORY + categoryRes)
@@ -28,16 +28,19 @@ export default function Store(props) {
         }
     }, [request, categoryRes, searchRes, searchValue, URL_BASIC])
 
-    console.log(request)
-    const { data, errStatus } = useFetch(request)
+    const { data, errStatus } = useFetch(request, {
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
 
     const handleLoadMore = () => {
         setLimit(limit + 20)
     }
 
-    if(errStatus === 404) return <p className="search-fail-size">There is an error {errStatus}</p>
-    if(!data) return <LoadingFetch/>
-    if(data?.products.length === 0) return <p className="search-fail-size">No result found :-( </p>
+    if (errStatus === 404) return <p className="search-fail-size">There is an error {errStatus}</p>
+    if (!data) return <LoadingFetch />
+    if (data?.products.length === 0) return <p className="search-fail-size">No result found :-( </p>
 
     return <>
         <div
@@ -84,14 +87,14 @@ export default function Store(props) {
                 : null
 
             }
-            {limit > data?.products?.length ? null : 
-                        <div className="load-more">
-                <button
-                    className="load-more-btn"
-                    onClick={(e) => handleLoadMore()}>
-                    Load more
-                </button>
-            </div>
+            {limit > data?.products?.length ? null :
+                <div className="load-more">
+                    <button
+                        className="load-more-btn"
+                        onClick={(e) => handleLoadMore()}>
+                        Load more
+                    </button>
+                </div>
             }
 
         </div>

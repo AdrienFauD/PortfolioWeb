@@ -4,6 +4,7 @@ import { Outlet, Link } from "react-router-dom"
 export default function Project() {
     return (
         <>
+        {process.env.TEST_ENV}
             <div className="container text-center project-container" >
                 <div className="row  gap-3" style={{ margin: '5vw' }}>
                     <Link className="project col-4 shadow rounded shadow-primary" to={'/dispenser'}>

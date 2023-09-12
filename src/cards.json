@@ -26,7 +26,7 @@
     },
     "6" : {
         "title" : "Home",
-        "text" : "Display something else than those cards",
+        "text" : "Display something else than those cards. Catch errors",
         "link" : "http://localhost:3000/"
     }
 }
