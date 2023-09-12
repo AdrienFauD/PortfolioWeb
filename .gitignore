@@ -7,6 +7,9 @@
 
 # testing
 /coverage
+.env
+testgit.txt
+test2.txt
 
 # production
 /build

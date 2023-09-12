@@ -1,0 +1,22 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin: auto;
+
+    & > label {
+        width: fit-content;
+    }
+}
+
+input:invalid {
+    border: solid red 2px;
+}
+
+input:invalid:required {
+    background-image: linear-gradient(to right, rgb(235, 232, 246), rgb(7, 117, 191));
+}
+
+input:valid {
+    border: 2px solid black;
+}

@@ -1,0 +1,184 @@
+:root{
+    --width-dispenser-min : 400px;
+    --width-dispenser-max : 700px;
+}
+
+.coin-inserter {
+    border: 1mm solid black;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+.coin-inserter input {
+    max-width: 100%;
+}
+
+.dispenser {
+    background-color: rgba(69, 76, 79, 0.887);
+    width: calc(50 * 1vw);
+    min-width: var(--width-dispenser-min);
+    max-width: var(--width-dispenser-max);
+    border: solid grey 2px;
+    height: 80vh;
+    font-size: 16px;
+    margin: auto;
+    margin-top: 20px;
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.window-grid {
+    display: grid;
+    border: 5px double black;
+    width: 98%;
+    height: 98%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-area: 1 / 1 / 3 / 1 ;
+}
+
+.error-panel {
+    border: grey solid 2px;
+    background-color: rgb(23, 18, 18);
+    color: red;
+    font-size: 1.5em;
+    width: 90%;
+    height: 50%;
+    margin: auto;
+    padding: 10px;
+    text-align: center;
+}
+
+.coin-inserter {
+    text-align: center;
+    grid-area: 3 / 2 / 3 / 2;
+}
+
+.choice-pad {
+    min-width: calc(var(--width-dispenser-min) * .2);
+    width: 60%;
+    display: grid;
+    grid-template-columns: repeat(3, 5fr);
+    grid-template-rows: repeat(4, 1fr);
+    height: auto;
+}
+
+.mask-drink-box{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    grid-area: 4 / 1 / 4 / 1;
+    z-index: 999;
+    overflow: hidden;
+}
+
+.drink-box {
+    background-color: rgb(19, 19, 19);
+    padding: 5%;
+    justify-content: stretch;
+    margin: auto;
+    z-index: 5;
+    overflow: hidden;
+    height: 100%;
+    
+}
+
+.cart {
+    font-size: 1.5em;
+    margin: auto;
+    position: relative;
+    text-align: center;
+    color: white;
+    border: solid rgb(164, 145, 145) 1px;
+    background-color: rgb(94, 94, 100);
+    height: 100%;
+    width: 95%;
+    overflow: hidden;
+}
+
+.item {
+    position: absolute;
+    margin: auto;
+    display: none;
+    font-size: 2em;
+    bottom: 2%;
+}
+
+.cart:hover .item {
+    display: block;
+}
+
+.cart::before {
+    background-color: rgb(52, 52, 51);
+    width: 100%;
+    height: 100%;
+    float: left;
+    content: "";
+
+}
+
+.cart:hover::before {
+    animation: open-tank .1s ease-in 0s forwards
+}
+
+@keyframes open-tank {
+    from {
+        clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    }
+
+    to {
+        clip-path: polygon(0% 0%, 100% 0%, 90% 30%, 10% 30%);
+    }
+}
+
+.pad-num {
+    color: aliceblue;
+    cursor: pointer;
+    border: ridge grey;
+    border-radius: 50% 50% 50% 50%;
+    text-align: center;
+    background-color: slategray;
+}
+
+.coin-box {
+    background-color: aliceblue;
+    height: 20%;
+    width: 80%;
+    padding: auto;
+    margin: auto;
+}
+
+.mask-anim-disp{
+    position: absolute;
+    height: 100%;
+    font-size: 3em;
+    margin: auto;
+    padding-left: 20%;
+    padding-top: 39px;
+    max-height: 3em;
+    z-index: 1;
+    animation: productFall 2s ease-in-out .1s ;
+}
+@keyframes productFall {
+    0% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: translate(0) scale(1.2);
+    }
+
+    55% {
+        transform: translate(0) scale(1.2);
+    }
+
+    100% {
+        transform: translateY(30em) scale(1.2);
+
+    }
+}
+

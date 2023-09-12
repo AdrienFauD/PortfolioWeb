@@ -1,0 +1,32 @@
+{
+    "0": {
+        "title": "Design ",
+        "text": "Factorization variables css. Update all the design in the portfolio to make it more appealing. ",
+        "link": "http://localhost:3000/"
+    },
+    "1": {
+        "title": "Dispenser",
+        "text": "Try adding sounds, but it may be bad ux design.",
+        "link": "http://localhost:3000/dispenser"
+    },
+    "2": {
+        "title": "Shop ",
+        "text": "Update authentification with user custom name and password",
+        "link": "http://localhost:3000/shop"
+    },
+    "3": {
+        "title": "Contact page ",
+        "text": "Add contact form : who, what (anonymous ? email ?). Link it to emailJS ?",
+        "link": "http://localhost:3000/contact"
+    },
+    "5" : {
+        "title" : "Projects",
+        "text" : "Add images to show projects.",
+        "link": "http://localhost:3000/projects"
+    },
+    "6" : {
+        "title" : "Home",
+        "text" : "Display something else than those cards. Catch errors",
+        "link" : "http://localhost:3000/"
+    }
+}
