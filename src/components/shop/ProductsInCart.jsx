@@ -15,8 +15,6 @@ export default function ProductsInCart(props) {
         }
     }, [cartItems])
 
-    console.log(cartValues)
-
     let totalPrice = 0
     if (cartValues) {
         totalPrice = Object.keys(cartValues).reduce((acc, el) => {

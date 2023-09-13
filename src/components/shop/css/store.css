@@ -16,6 +16,16 @@
     background-repeat: no-repeat;
     background-size: contain;
     grid-column: 12;
+    animation: addToCart 1s ease-out 0s forwards;
+}
+
+@keyframes addToCart {
+    from{
+        transform: scale(1.1);
+    }
+    to{
+        transform: scale(1);
+    }
 }
 
 .cart-reduced:hover {

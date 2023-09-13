@@ -12,7 +12,7 @@ export const filterEscapeSpecialChars = (elementToFilter) => {
 }
 // only number / letter, @, .
 export const formatEmailType = (elementToFilter) => {
-    const reg = /^([\w\d-_.]+)@([\w]+).([\w]{2,4})$/;
+    const reg = /^([\w\d(-_.)]+)@([\w.]+).([\w]{2,4})$/;
     if (!elementToFilter.match(reg)) return 'Not an email format'
     return "It's an email"
 }

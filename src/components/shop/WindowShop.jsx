@@ -1,5 +1,4 @@
 import { useSearchParams } from "react-router-dom";
-import Navigation from "./Navigation";
 import Store from "./Store";
 import Product from "./Product";
 
@@ -10,10 +9,8 @@ export default function WindowShop(props) {
 
     return (
         <>
-
             {question === "" ?
                 <div className="shop-window">
-                    <Navigation />
                     <Store
                         isProduct={isProduct}
                         searchValue={searchValue}

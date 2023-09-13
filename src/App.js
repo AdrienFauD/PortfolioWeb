@@ -13,7 +13,7 @@ function App() {
   return (
     <>
       <div className="App container-fluid p-0 m-0">
-        <div className="bg-primary-subtle text-black" style={{ minHeight: '100vh' }}>
+        <div className="bg-dark" style={{ minHeight: '100vh' }}>
           <Navbar />
           <Routes>
             <Route path='/' element={<Home />} />

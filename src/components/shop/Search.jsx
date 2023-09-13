@@ -24,7 +24,8 @@ export default function Search(props) {
             />
             <button
                 className='search-lens'
-                onClick={handleSubmitSearch}>
+                onClick={handleSubmitSearch}
+            >
                 🔎
             </button>
         </form>

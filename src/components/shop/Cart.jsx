@@ -2,7 +2,7 @@ import countDuplicatesObjectInArray from "../../functions/countDuplicatesObjectI
 import { useState, useEffect } from "react";
 import ProductsInCart from "./ProductsInCart";
 import './css/cart.css'
-
+import CartIcon from "./CartIcon";
 
 export default function Cart(props) {
     const { isAuth, isToggled, handleIsLoged, cart } = props
@@ -29,8 +29,9 @@ export default function Cart(props) {
 
 
             </> : null}
-        <div className="cart-reduced" onClick={handleIsLoged}>
-            {cart.length}
-        </div>
+        <CartIcon 
+            handleIsLoged={handleIsLoged}
+            cart={cart}
+        />
     </>
 }

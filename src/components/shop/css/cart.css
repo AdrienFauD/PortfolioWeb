@@ -12,7 +12,7 @@
 
 }
 .cart-shop {
-    min-width: 400px;
+    min-width: 500px;
     animation: cartDisplay .3s ease-in 0s;
     overflow-y: scroll;
 }

@@ -6,34 +6,26 @@ import { Link } from 'react-router-dom'
 export default function Navigation() {
 
     const { data } = useFetch('https://dummyjson.com/products/categories')
-    const [toggleList, setToggleList] = useState(true)
 
-    const handleShowList = () => {
-        setToggleList(prev => !prev)
-    }
 
-    useEffect(() => {
-        if (window.innerWidth < 400) {
-            setToggleList(false)
-        }
-    }, [])
-
-    if(!data) return 
+    if (!data) return
 
     return (
         <>
-            <div className='wrapper-nav-list' onClick={handleShowList}>
-                <span>| | |</span>
+            <div className='top-bar-category'>
+                <span>Categories</span>
+
+                <ul>
+                    {data?.map(el =>
+                        <li key={el}>
+                            <Link className={el} to={`/shop?category=${el}`}>
+                                {el.charAt(0).toUpperCase() + el.slice(1)}
+                            </Link>
+                        </li>
+                    )}
+                </ul>
             </div>
-            <ul style={{ display: toggleList ? "block" : "none" }}>
-                {data?.map(el =>
-                    <li key={el}>
-                        <Link to={`/shop?category=${el}`} style={{ textDecoration: "none", color: 'black' }}>
-                            {el.charAt(0).toUpperCase() + el.slice(1)}
-                        </Link>
-                    </li>
-                )}
-            </ul>
+
         </>
     )
 }
