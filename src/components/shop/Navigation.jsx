@@ -1,5 +1,4 @@
 import useFetch from '../../hooks/useFetch'
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 

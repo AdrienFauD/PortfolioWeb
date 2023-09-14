@@ -6,7 +6,6 @@ export default function useToken() {
     const userToken = JSON.parse(tokenString);
     return userToken?.token
   };
-  // token === eorzerzerezrdfetc
   const [token, setToken] = useState(getToken());
 
   const saveToken = userToken => {

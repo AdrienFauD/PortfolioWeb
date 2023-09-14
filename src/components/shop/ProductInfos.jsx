@@ -10,7 +10,6 @@ export default function ProductInfos(props) {
 
 
     return (
-
         <>
             <div className="cart-item-row">
                 <div className="cart-thumbnail" >

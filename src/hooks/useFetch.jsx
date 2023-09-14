@@ -21,6 +21,6 @@ export default function useFetch(url, actions) {
                 })
         })()
     }, [url])
-    
+
     return { data, errStatus }
 }

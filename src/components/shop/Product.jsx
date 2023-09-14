@@ -1,21 +1,25 @@
-import { useState } from 'react'
 import useFetch from '../../hooks/useFetch'
 import { useSearchParams } from 'react-router-dom'
 import LoadingFetch from './LoadingFetch'
+import AddCartButton from './AddCartButton'
+import Rating from './Rating'
 
 
-export default function Product(props) {
+export default function Product() {
 
-    const { handleAddCart, isAuth } = props
-    const [searchParams, setSearchParams] = useSearchParams({ q: "a", i: 0 })
-    const question = searchParams.get("q")
-    const { data, err, loading } = useFetch('https://dummyjson.com/products/search?q=' + question)
-    const [currentImg, setCurrentImg] = useState(0)
+    const [searchParams, setSearchParams] = useSearchParams({ q: "a", img: 0 })
+    const searchQuery = searchParams.get("q")
+    const imgQuery = searchParams.get("img")
+    const { data, errStatus } = useFetch('https://dummyjson.com/products/search?q=' + searchQuery)
 
-    
     const handleChangeImage = (index) => {
-        setCurrentImg(index)
+        setSearchParams({ q: "a", img: index })
     }
+
+
+    if (errStatus) return <p className="search-fail-size">There is an error {errStatus}</p>
+    if (!data) return <LoadingFetch />
+    if (data?.products.length === 0) return <p className="search-fail-size">No result found :-( </p>
 
     return (
         <>
@@ -27,15 +31,14 @@ export default function Product(props) {
                                 <img
                                     className='list-element'
                                     src={el}
-                                    onMouseEnter={() => handleChangeImage(index)}
+                                    onMouseDown={() => handleChangeImage(index)}
                                 />
-
                             )}
                         </div>
 
                         <img
                             className='img-active'
-                            src={data.products[0].images[currentImg]}
+                            src={data.products[0].images[imgQuery > data.products[0].images.length ? 0 : imgQuery]}
                         />
                     </div>
                     <div className='item-infos'>
@@ -50,6 +53,7 @@ export default function Product(props) {
                         </div>
                         <div className='item-rating'>
                             Rated {data.products[0].rating} / 5
+                            <Rating number={data.products[0].rating} />
                         </div>
                         {data.products[0].stock < 10 ?
                             <div className='item-stock'>
@@ -67,13 +71,9 @@ export default function Product(props) {
                         <div className='item-description'>
                             {data.products[0].description}
                         </div>
-                        <button 
-                        disabled={!isAuth}
-                        className="add-cart-button"
-                        onClick={(e) => isAuth ? handleAddCart(data.products[0]) : null}
-                        >
-                            Add to cart
-                        </button>
+                        <AddCartButton
+                            data={data}
+                        />
                     </div>
 
                 </div>

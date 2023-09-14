@@ -18,7 +18,7 @@ export default function Shop() {
     const [cart, setCart] = useState([])
 
     async function handleIsLoged() {
-        if(isAuth) setIsToggled(prev => !prev)
+        if (isAuth) setIsToggled(prev => !prev)
     }
 
     async function handleAuth(e) {
@@ -49,40 +49,42 @@ export default function Shop() {
         setSearchValue(param)
     }
 
-    return <ProductContext.Provider value={{ handleOrder, handleDeleteItemCart, isAuth }}>
-        <div className="shop">
-            <TopBar
-                handleSearch={handleSearch}
-                isAuth={isAuth}
-                handleAuth={handleAuth}
-                isToggled={isToggled}
-                handleIsLoged={handleIsLoged}
-                cart={cart}
+    return (
+        <ProductContext.Provider
+            value={{
+                handleOrder,
+                handleDeleteItemCart,
+                handleSearch,
+                handleIsLoged,
+                handleAddCart,
+                handleProduct,
+                handleAuth,
+                isProduct,
+                isAuth,
+                cart,
+                searchValue,
+                isToggled
+            }}>
 
-            />
+                
+            <div className="shop">
+                <TopBar />
 
-            <Routes >
-                <Route>
-                    <Route
-                        path='/'
-                        index
-                        element={<WindowShop
-                            isProduct={isProduct}
-                            searchValue={searchValue}
-                            isAuth={isAuth}
-                            handleAuth={handleAuth}
-                            handleAddCart={handleAddCart}
-                            handleProduct={handleProduct}
-                        />}
+                <Routes >
+                    <Route>
+                        <Route
+                            path='/'
+                            index
+                            element={<WindowShop/>}
 
-                    />
-                    <Route
-                        path='*'
-                        element={<Product />}
-                    />
-                </Route>
+                        />
+                        <Route
+                            path='*'
+                            element={<Product />}
+                        />
+                    </Route>
 
-            </Routes>
-        </div>
-    </ProductContext.Provider >
+                </Routes>
+            </div>
+        </ProductContext.Provider >)
 }

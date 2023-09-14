@@ -169,8 +169,7 @@
     min-height: var(--img-height);
     display: grid;
     grid-template-columns: repeat(auto-fill, 400px);
-    grid-template-rows: 1;
-
+    place-items: center;
 }
 
 

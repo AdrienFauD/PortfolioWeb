@@ -1,11 +1,12 @@
 import countDuplicatesObjectInArray from "../../functions/countDuplicatesObjectInArray";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ProductsInCart from "./ProductsInCart";
 import './css/cart.css'
 import CartIcon from "./CartIcon";
+import { ProductContext } from "./Shop";
 
-export default function Cart(props) {
-    const { isAuth, isToggled, handleIsLoged, cart } = props
+export default function Cart() {
+    const { isAuth, isToggled, handleIsLoged, cart } = useContext(ProductContext)
     const [cartItems, setCartItems] = useState([{}, {}])
 
     const handleSort = () => {

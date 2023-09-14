@@ -2,9 +2,10 @@ import Search from "./Search";
 import Cart from "./Cart";
 import Login from "./Login";
 import Navigation from "./Navigation";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { ProductContext } from "./Shop";
 
-export default function TopBar(props) {
+export default function TopBar() {
 
     const [toggleWrapper, setToggleWrapper] = useState(null)
     const {
@@ -14,7 +15,7 @@ export default function TopBar(props) {
         isAuth,
         isToggled,
         cart
-    } = props
+    } = useContext(ProductContext)
 
     const handleToggleWrapper = () => {
         if(toggleWrapper === "none" || toggleWrapper === null) setToggleWrapper("grid")

@@ -1,9 +1,10 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ProductContext } from './Shop'
 
-export default function Search(props) {
+export default function Search() {
 
-    const { handleSearch } = props
+    const { handleSearch } = useContext(ProductContext)
     const navigate = useNavigate()
     const [question, setQuestions] = useState('')
 

@@ -1,12 +1,13 @@
 import useFetch from "../../hooks/useFetch"
 import { Link, Outlet, useSearchParams } from "react-router-dom"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import './css/store.css'
 import LoadingFetch from "./LoadingFetch"
+import { ProductContext } from "./Shop"
 
-export default function Store(props) {
+export default function Store() {
 
-    const { searchValue, handleAddCart, handleProduct, isAuth } = props
+    const { searchValue, handleAddCart, handleProduct, isAuth } = useContext(ProductContext)
     const [limit, setLimit] = useState(20)
     const URL_BASIC = 'https://dummyjson.com/products?limit=' + limit
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
@@ -50,7 +51,7 @@ export default function Store(props) {
                 Object.keys(data.products).map((product, i) => (
                     <div key={product} className="product-quickview" >
                         <Link
-                            to={'?q=' + data["products"][i].title + '&i=' + data["products"][i].id}
+                            to={'?q=' + data["products"][i].title + '&img=0'}
                             state={data["products"][i]}
                             onClick={(e) => handleProduct()}
                         >

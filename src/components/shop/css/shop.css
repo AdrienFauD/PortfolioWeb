@@ -73,21 +73,23 @@
     display: block;
     font-size: 2em;
 }
-
-.top-bar-category:hover {
+.top-bar-category:hover{
     cursor: pointer;
-    animation: hoverChangeBackgroundCat .2s ease-in 0s forwards;
+}
+.top-bar-category:hover>ul {
+    cursor: pointer;
+    animation: hoverChangeBackgroundCat .5s ease-in 0s forwards;
 }
 
 @keyframes hoverChangeBackgroundCat{
     from{
         background-color: rgb(245, 225, 210);
-
+        opacity: 0;
     }
     to{
-        background-color: hsl(84, 26%, 74%);
+        background-color: hsl(79, 90%, 96%);
         border-radius: 10px;
-
+        opacity: 1;
     }
 }
 
