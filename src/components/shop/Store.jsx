@@ -1,9 +1,11 @@
 import useFetch from "../../hooks/useFetch"
-import { Link, Outlet, useSearchParams } from "react-router-dom"
+import { useSearchParams } from "react-router-dom"
 import { useContext, useEffect, useState } from "react"
 import './css/store.css'
 import LoadingFetch from "./LoadingFetch"
 import { ProductContext } from "./Shop"
+import ProductSlider from "./ProductSlider"
+import ProductQuickViews from "./ProductQuickViews"
 
 export default function Store() {
 
@@ -12,11 +14,14 @@ export default function Store() {
     const URL_BASIC = 'https://dummyjson.com/products?limit=' + limit
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
     const URL_WITH_CATEGORY = 'https://dummyjson.com/products/category/'
-    const [searchParam] = useSearchParams({ s: '', category: '' })
+    const [searchParam] = useSearchParams({ s: '', category: '', price_from: '', price_to: '', dir: '' })
     const searchRes = searchParam.get('s')
     const categoryRes = searchParam.get('category')
+    const priceMin = searchParam.get('price_from')
+    const priceMax = searchParam.get('price_to')
+    const dir = searchParam.get('dir')
     const [request, setRequest] = useState('')
-    
+
     useEffect(() => {
         if (categoryRes) {
             setRequest(URL_WITH_CATEGORY + categoryRes)
@@ -39,55 +44,38 @@ export default function Store() {
         setLimit(limit + 20)
     }
 
-    if (errStatus === 404) return <p className="search-fail-size">There is an error {errStatus}</p>
+    if (errStatus >= 300) return <p className="search-fail-size">There is an error {errStatus}</p>
     if (!data) return <LoadingFetch />
     if (data?.products.length === 0) return <p className="search-fail-size">No result found :-( </p>
+
+
+
+
+
+    const filteredData = data.products.filter((product) => product.price > (priceMin))
+        .sort((p1, p2) => dir === "DSC" ? (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0 :
+            dir === "ASC" ? (p1.price > p2.price) ? 1 : (p1.price < p2.price) ? -1 : 0 :  0)
+        .filter((product) => priceMax ? product.price < (priceMax) : product.price === product.price)
+
+
 
     return <>
         <div
             className="store"
         >
-            {data ?
-                Object.keys(data.products).map((product, i) => (
-                    <div key={product} className="product-quickview" >
-                        <Link
-                            to={'?q=' + data["products"][i].title + '&img=0'}
-                            state={data["products"][i]}
-                            onClick={(e) => handleProduct()}
-                        >
-                            <img
-                                className="img-qv"
-                                src={`${data['products'][i].thumbnail}`}
-                                alt=''
-
-                            />
-                        </Link>
-                        <Outlet context={{ item: data["products"][i].id }} />
-                        <h6 className="title-qv">
-                            {data["products"][i].title}
-                        </h6>
-                        <div className="discount-container">
-                            <div className="price-qv">
-                                {data["products"][i].price}€
-                            </div>
-                            <div className="disc-qv">-{(data["products"][i].discountPercentage).toFixed()}%</div>
-                        </div>
-                        <div className="disc-price-qv">{(data["products"][i].price - (((data["products"][i].price) * data["products"][i].discountPercentage) / 100)).toFixed(2)}€</div>
-                        <div className="stock-qv">{data["products"][i].stock < 10 ? `only ${data["products"][i].stock} available !` : null}</div>
-                        <button
-                            disabled={!isAuth}
-                            className="add-cart-button"
-                            onClick={() => isAuth ? handleAddCart(data["products"][i]) : null}>
-                            Add to cart
-                        </button>
-
-
-                    </div>
-                ))
-
+            {/* {data ?
+                <ProductSlider
+                    products={data.products}
+                />
                 : null
+            } */}
 
-            }
+            {data ?
+                <ProductQuickViews
+                    filteredData={filteredData}
+                />
+                : null}
+
             {limit > data?.products?.length ? null :
                 <div className="load-more">
                     <button

@@ -1,6 +1,4 @@
 import { useState, useEffect } from 'react'
-import Rating from '../shop/Rating'
-import '../css/home.css'
 import data from "../../cards.json"
 
 export default function Home() {
@@ -45,8 +43,6 @@ export default function Home() {
 
     return (
         <>
-
-            <Rating number={1.9} ></Rating>
             
             <div className="container bg-ternary">
                 <div className='row'>

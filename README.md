@@ -75,3 +75,4 @@ Package used :
 Bootstrap 5.3
 React-router-dom 6.15.0
 Express 4.18.2
+react-lazy-load-image-component
