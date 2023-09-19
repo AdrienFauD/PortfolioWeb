@@ -6,7 +6,7 @@ export default function Search() {
 
     const { handleSearch } = useContext(ProductContext)
     const navigate = useNavigate()
-    const [question, setQuestions] = useState('')
+    const [question, setQuestion] = useState('')
 
     const handleSubmitSearch = (e) => {
         e.preventDefault()
@@ -20,7 +20,7 @@ export default function Search() {
                 className='searchbar'
                 placeholder='Your research'
                 value={question}
-                onChange={e => setQuestions(e.target.value)}
+                onChange={e => setQuestion(e.target.value)}
                 type="search"
             />
             <button

@@ -43,7 +43,6 @@ export default function Home() {
 
     return (
         <>
-            
             <div className="container bg-ternary">
                 <div className='row'>
                     <div className="card m-auto" style={{ width: "18rem" }}>

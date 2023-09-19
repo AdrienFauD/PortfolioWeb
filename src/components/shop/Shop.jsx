@@ -69,7 +69,7 @@ export default function Shop() {
                 
             <div className="shop">
                 <TopBar />
-
+                
                 <Routes >
                     <Route>
                         <Route

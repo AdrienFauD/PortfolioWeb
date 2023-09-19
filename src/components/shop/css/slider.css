@@ -1,0 +1,50 @@
+:root {
+    --slider-width: 90vw;
+    --slider-btn-width: calc(var(--slider-width) * 0.05);
+    --slider-quickview-width: calc(((var(--slider-width)) - 2 * var(--slider-btn-width))/4)
+}
+
+.slider {
+    width: var(--slider-width);
+    display: grid;
+    grid-template-columns: repeat(auto, 1fr);
+    grid-auto-flow: column;
+    align-items: center;
+}
+
+.slider-left-btn,
+.slider-right-btn {
+    width: var(--slider-btn-width);
+    height: var(--slider-btn-width);
+    border-radius: 50%;
+    justify-self: center;
+    background-size: 100%;
+    background-color: transparent;
+    color: rgb(152, 145, 46);
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.1);
+        border-color: azure;
+    }
+}
+
+.slider-left-btn{
+    background-image: url(../../../images/pointing_left.svg);
+}
+.slider-right-btn{
+    background-image: url(../../../images/pointing_right.svg);
+}
+
+.slider-products{
+    background-color: rgb(5, 5, 5);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+}
+.slider-products>.product-quickview {
+    position: relative;
+    min-width: var(--slider-quickview-width);
+    transition: left 100ms ease-out;
+}

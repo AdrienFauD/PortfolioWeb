@@ -7,13 +7,14 @@ import Rating from './Rating'
 
 export default function Product() {
 
-    const [searchParams, setSearchParams] = useSearchParams({ q: "a", img: 0 })
+    const [searchParams, setSearchParams] = useSearchParams({ q: "", img: 0 })
     const searchQuery = searchParams.get("q")
     const imgQuery = searchParams.get("img")
     const { data, errStatus } = useFetch('https://dummyjson.com/products/search?q=' + searchQuery)
 
     const handleChangeImage = (index) => {
-        setSearchParams({ q: "a", img: index })
+        // setSearchParams(prev => [...prev, e.vakueimg : index])
+        setSearchParams({ q: searchQuery, img: index })
     }
 
 

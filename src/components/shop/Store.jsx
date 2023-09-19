@@ -4,12 +4,11 @@ import { useContext, useEffect, useState } from "react"
 import './css/store.css'
 import LoadingFetch from "./LoadingFetch"
 import { ProductContext } from "./Shop"
-import ProductSlider from "./ProductSlider"
 import ProductQuickViews from "./ProductQuickViews"
 
 export default function Store() {
 
-    const { searchValue, handleAddCart, handleProduct, isAuth } = useContext(ProductContext)
+    const { searchValue } = useContext(ProductContext)
     const [limit, setLimit] = useState(20)
     const URL_BASIC = 'https://dummyjson.com/products?limit=' + limit
     const URL_WITH_SEARCH = 'https://dummyjson.com/products/search?q='
@@ -54,26 +53,23 @@ export default function Store() {
 
     const filteredData = data.products.filter((product) => product.price > (priceMin))
         .sort((p1, p2) => dir === "DSC" ? (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0 :
-            dir === "ASC" ? (p1.price > p2.price) ? 1 : (p1.price < p2.price) ? -1 : 0 :  0)
+            dir === "ASC" ? (p1.price > p2.price) ? 1 : (p1.price < p2.price) ? -1 : 0 : 0)
         .filter((product) => priceMax ? product.price < (priceMax) : product.price === product.price)
-
 
 
     return <>
         <div
             className="store"
         >
-            {/* {data ?
-                <ProductSlider
-                    products={data.products}
-                />
-                : null
-            } */}
+            
 
             {data ?
-                <ProductQuickViews
-                    filteredData={filteredData}
-                />
+                Object.keys(filteredData).map((product, i) => (
+                    <ProductQuickViews
+                        filteredData={filteredData}
+                        product={product}
+                        i={i}
+                    />))
                 : null}
 
             {limit > data?.products?.length ? null :

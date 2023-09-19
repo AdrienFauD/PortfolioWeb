@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import Store from "./Store";
 import Product from "./Product";
+import PopularProductsSlider from "./PopularProductsSlider";
 
 export default function WindowShop() {
     
@@ -11,6 +12,7 @@ export default function WindowShop() {
         <>
             {question === "" ?
                 <div className="shop-window">
+                    <PopularProductsSlider />
                     <Store />
                 </div>
                 :

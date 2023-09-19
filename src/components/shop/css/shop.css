@@ -73,20 +73,23 @@
     display: block;
     font-size: 2em;
 }
-.top-bar-category:hover{
+
+.top-bar-category:hover {
     cursor: pointer;
 }
+
 .top-bar-category:hover>ul {
     cursor: pointer;
     animation: hoverChangeBackgroundCat .5s ease-in 0s forwards;
 }
 
-@keyframes hoverChangeBackgroundCat{
-    from{
+@keyframes hoverChangeBackgroundCat {
+    from {
         background-color: rgb(245, 225, 210);
         opacity: 0;
     }
-    to{
+
+    to {
         background-color: hsl(79, 90%, 96%);
         border-radius: 10px;
         opacity: 1;
@@ -227,6 +230,7 @@
         display: none;
     }
 }
+
 /* 
 @media screen and (min-width : 400px) {
     .top-bar-category>ul>li {
