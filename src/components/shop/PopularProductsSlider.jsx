@@ -33,6 +33,7 @@ export default function PopularProductsSlider() {
                 {data ?
                     Object.keys(ratingFilteredData).map((product, i) => (
                         <ProductQuickViews
+                            key={i}
                             style={slideStyleGap}
                             filteredData={ratingFilteredData}
                             product={product}

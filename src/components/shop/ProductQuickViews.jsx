@@ -3,7 +3,7 @@ import { Link, Outlet } from "react-router-dom"
 import { ProductContext } from "./Shop"
 
 export default function ProductQuickViews(props) {
-    const { filteredData, i, product, style } = props
+    const { filteredData, i, style } = props
     const { handleAddCart, handleProduct, isAuth } = useContext(ProductContext)
 
     return (
@@ -11,7 +11,7 @@ export default function ProductQuickViews(props) {
             {
                 filteredData ?
                     <div
-                        key={filteredData[product]}
+                        key={i}
                         className="product-quickview"
                         style={{left : "calc(var(--slider-quickview-width)*"+style+")"}}
                     >

@@ -5,6 +5,7 @@ import './css/store.css'
 import LoadingFetch from "./LoadingFetch"
 import { ProductContext } from "./Shop"
 import ProductQuickViews from "./ProductQuickViews"
+import FilterMenu from "./FilterMenu"
 
 export default function Store() {
 
@@ -49,8 +50,6 @@ export default function Store() {
 
 
 
-
-
     const filteredData = data.products.filter((product) => product.price > (priceMin))
         .sort((p1, p2) => dir === "DSC" ? (p1.price < p2.price) ? 1 : (p1.price > p2.price) ? -1 : 0 :
             dir === "ASC" ? (p1.price > p2.price) ? 1 : (p1.price < p2.price) ? -1 : 0 : 0)
@@ -61,11 +60,10 @@ export default function Store() {
         <div
             className="store"
         >
-            
-
             {data ?
                 Object.keys(filteredData).map((product, i) => (
                     <ProductQuickViews
+                        key={i}
                         filteredData={filteredData}
                         product={product}
                         i={i}
